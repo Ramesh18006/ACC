@@ -15,25 +15,19 @@
     <!-- Header / Navbar (Desktop & Mobile Top Header) -->
     <header class="navbar">
         <div class="nav-container">
-            <div class="brand">
+            <a href="home.html" class="brand" style="text-decoration: none;">
                 <span class="material-symbols-outlined icon-fill">memory</span>
                 <span class="brand-name">Aruna Computers Care</span>
-            </div>
+            </a>
 
             <!-- Desktop Links Only -->
             <nav class="nav-links desktop-only">
                 <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
                 <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                <a href="service.html"><span class="material-symbols-outlined">pending_actions</span> My Requests</a>
                 <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
             </nav>
 
-            <!-- Search Bar for Desktop -->
-            <div class="search-box desktop-only">
-                <span class="material-symbols-outlined search-icon">search</span>
-                <input type="text" placeholder="Search laptops, printers...">
-                <span class="material-symbols-outlined mic-icon">mic</span>
-            </div>
 
             <button class="lang-btn">
                 EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
@@ -45,32 +39,16 @@
     <main class="main-container">
 
         <!-- Hero Header -->
-        <section class="hero-header text-center">
+        <section class="hero-header text-center" style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;">
             <h2>🛍️ Explore Products</h2>
-            <p>Quality Technology Products for Home, Office & Business.</p>
-        </section>
-
-        <!-- Search Bar for Mobile -->
-        <div class="search-box mobile-only">
-            <span class="material-symbols-outlined search-icon">search</span>
-            <input type="text" placeholder="Search laptops, printers, accessories...">
-            <span class="material-symbols-outlined mic-icon">mic</span>
-        </div>
-
-        <!-- Brand Filter Chips -->
-        <section class="brand-chips-section">
-            <div class="chips-scroll">
-                <button class="chip-btn active">All</button>
-                <button class="chip-btn">HP</button>
-                <button class="chip-btn">Dell</button>
-                <button class="chip-btn">Lenovo</button>
-                <button class="chip-btn">Acer</button>
-                <button class="chip-btn">ASUS</button>
-                <button class="chip-btn">Canon</button>
-                <button class="chip-btn">Epson</button>
+            <p style="margin-bottom: 8px;">Quality Technology Products for Home, Office & Business.</p>
+            
+            <div class="search-box">
+                <span class="material-symbols-outlined search-icon">search</span>
+                <input type="text" placeholder="Search laptops, printers, accessories...">
+                <span class="material-symbols-outlined mic-icon">mic</span>
             </div>
         </section>
-
         <!-- Categories Grid -->
         <section class="section-block">
             <h3>Shop by Category</h3>
@@ -276,8 +254,8 @@
     <!-- Mobile Bottom Navigation Bar (Hidden on PC) -->
     <nav class="bottom-nav mobile-only">
         <a href="home.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+        <a href="service.html"><span class="material-symbols-outlined">build</span><span>Services</span></a>
         <a href="product.html" class="active"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span><span>Products</span></a>
-        <a href="service.html"><span class="material-symbols-outlined">pending_actions</span><span>My Requests</span></a>
         <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
     </nav>
 

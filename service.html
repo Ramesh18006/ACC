@@ -9,26 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     
-    <link rel="stylesheet" href="service.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
-            <div class="header-left">
-                <a href="index.html" class="back-btn"><span class="material-symbols-outlined">arrow_back</span></a>
-                <span class="page-title">Request Service</span>
-            </div>
+            <a href="home.html" class="brand" style="text-decoration: none;">
+                <span class="material-symbols-outlined icon-fill">memory</span>
+                <span class="brand-name">Aruna Computers Care</span>
+            </a>
 
+            <!-- Desktop Links Only -->
             <nav class="nav-links desktop-only">
-                <a href="index.html"><span class="material-symbols-outlined">home</span> Home</a>
-                <a href="services.html" class="active"><span class="material-symbols-outlined">build</span> Services</a>
-                <a href="#"><span class="material-symbols-outlined">shopping_bag</span> Shop</a>
+                <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html" class="active"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
                 <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
             </nav>
 
-            <button class="help-btn"><span class="material-symbols-outlined">help</span></button>
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
         </div>
     </header>
 
@@ -150,10 +153,10 @@
             </div>
 
             <div class="success-actions">
-                <a href="services.html" class="btn btn-primary full-width">
+                <a href="service.html" class="btn btn-primary full-width">
                     View My Services <span class="material-symbols-outlined">arrow_forward</span>
                 </a>
-                <a href="index.html" class="btn btn-outline full-width">
+                <a href="home.html" class="btn btn-outline full-width">
                     <span class="material-symbols-outlined">home</span> Back to Home
                 </a>
             </div>
@@ -170,10 +173,10 @@
             <div class="footer-col">
                 <h5>Services</h5>
                 <ul>
-                    <li><a href="#">Laptop & PC Repair</a></li>
-                    <li><a href="#">Printer Service & Ink</a></li>
-                    <li><a href="#">CCTV Installation</a></li>
-                    <li><a href="#">Networking Solutions</a></li>
+                    <li><a href="service.html">Laptop & PC Repair</a></li>
+                    <li><a href="service.html">Printer Service & Ink</a></li>
+                    <li><a href="service.html">CCTV Installation</a></li>
+                    <li><a href="service.html">Networking Solutions</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -193,12 +196,12 @@
 
     <!-- Mobile Bottom Navigation Bar -->
     <nav class="bottom-nav mobile-only">
-        <a href="index.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
-        <a href="services.html" class="active"><span class="material-symbols-outlined">build</span><span>My Service</span></a>
-        <a href="#"><span class="material-symbols-outlined">shopping_bag</span><span>Shop</span></a>
+        <a href="home.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+        <a href="service.html" class="active"><span class="material-symbols-outlined">build</span><span>Services</span></a>
+        <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span><span>Products</span></a>
         <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
     </nav>
 
-    <script src="request-service.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
