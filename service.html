@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Service - Aruna Computers Care</title>
+    
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="service.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="header-left">
+                <a href="index.html" class="back-btn"><span class="material-symbols-outlined">arrow_back</span></a>
+                <span class="page-title">Request Service</span>
+            </div>
+
+            <nav class="nav-links desktop-only">
+                <a href="index.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="services.html" class="active"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="#"><span class="material-symbols-outlined">shopping_bag</span> Shop</a>
+                <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
+            </nav>
+
+            <button class="help-btn"><span class="material-symbols-outlined">help</span></button>
+        </div>
+    </header>
+
+    <!-- Main Form Container -->
+    <main class="main-container" id="formView">
+        <div class="page-intro">
+            <h2>We're here to help.</h2>
+            <p>Tell us what's wrong with your device.</p>
+        </div>
+
+        <form id="serviceForm" class="request-form">
+            <!-- 1. Device Category Selection -->
+            <div class="form-section">
+                <label class="section-label">Device Category</label>
+                <div class="chip-group">
+                    <label class="chip">
+                        <input type="radio" name="category" value="Laptop" checked>
+                        <span>Laptop</span>
+                    </label>
+                    <label class="chip">
+                        <input type="radio" name="category" value="Desktop">
+                        <span>Desktop</span>
+                    </label>
+                    <label class="chip">
+                        <input type="radio" name="category" value="Printer">
+                        <span>Printer</span>
+                    </label>
+                    <label class="chip">
+                        <input type="radio" name="category" value="CCTV">
+                        <span>CCTV</span>
+                    </label>
+                    <label class="chip">
+                        <input type="radio" name="category" value="Networking">
+                        <span>Networking</span>
+                    </label>
+                    <label class="chip">
+                        <input type="radio" name="category" value="Other">
+                        <span>Other</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 2. Issue Description -->
+            <div class="form-section">
+                <label class="section-label">Describe the issue</label>
+                <div class="textarea-wrapper">
+                    <textarea id="issueText" rows="4" placeholder="E.g., Screen is flickering, laptop won't turn on..." required></textarea>
+                    <button type="button" class="mic-fab" id="micBtn" title="Voice Input">
+                        <span class="material-symbols-outlined">mic</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3. Attachments & Location -->
+            <div class="action-cards-group">
+                <div class="media-card" id="uploadPhotoBtn">
+                    <div class="media-icon bg-blue">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                    </div>
+                    <div class="media-text">
+                        <span class="card-title">Add Photo</span>
+                        <span class="card-subtitle" id="photoStatus">Upload from gallery</span>
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                </div>
+
+                <div class="media-card" id="shareLocationBtn">
+                    <div class="media-icon bg-blue">
+                        <span class="material-symbols-outlined">location_on</span>
+                    </div>
+                    <div class="media-text">
+                        <span class="card-title">Share Location</span>
+                        <span class="card-subtitle" id="locationStatus">Faster service</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Contact Details -->
+            <div class="form-section">
+                <label class="section-label">Contact Details</label>
+
+                <div class="floating-input-group">
+                    <input type="text" id="fullName" placeholder=" " required>
+                    <label for="fullName">Full Name</label>
+                </div>
+
+                <div class="floating-input-group">
+                    <input type="tel" id="mobileNumber" placeholder=" " required pattern="[0-9]{10}">
+                    <label for="mobileNumber">Mobile Number</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">
+                Submit Request <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+        </form>
+    </main>
+
+    <!-- SUCCESS STATE MODAL/VIEW (Hidden by default) -->
+    <div class="success-overlay" id="successView" style="display: none;">
+        <div class="success-container">
+            <span class="brand-subtext">Aruna Computers Care</span>
+            
+            <div class="card success-card">
+                <div class="success-icon-box">
+                    <span class="material-symbols-outlined">check_circle</span>
+                </div>
+
+                <h3>Request Submitted Successfully</h3>
+                <p>Thank you for contacting Aruna Computers Care. We've received your request. Our team will contact you shortly.</p>
+
+                <div class="tracking-id-box">
+                    <span class="tracking-label">YOUR TRACKING ID</span>
+                    <div class="tracking-code">
+                        <span class="material-symbols-outlined">confirmation_number</span>
+                        <strong id="displayTrackingId">ACC-2026-001</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-actions">
+                <a href="services.html" class="btn btn-primary full-width">
+                    View My Services <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+                <a href="index.html" class="btn btn-outline full-width">
+                    <span class="material-symbols-outlined">home</span> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Desktop Footer -->
+    <footer class="site-footer desktop-only">
+        <div class="footer-container">
+            <div class="footer-col main-col">
+                <h4 class="footer-title">ARUNA COMPUTERS CARE</h4>
+                <p>Complete computer, laptop, printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="#">Laptop & PC Repair</a></li>
+                    <li><a href="#">Printer Service & Ink</a></li>
+                    <li><a href="#">CCTV Installation</a></li>
+                    <li><a href="#">Networking Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Information</h5>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shop Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Aruna Computers Care. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="bottom-nav mobile-only">
+        <a href="index.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+        <a href="services.html" class="active"><span class="material-symbols-outlined">build</span><span>My Service</span></a>
+        <a href="#"><span class="material-symbols-outlined">shopping_bag</span><span>Shop</span></a>
+        <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
+    </nav>
+
+    <script src="request-service.js"></script>
+</body>
+</html>

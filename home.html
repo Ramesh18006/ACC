@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aruna Computers Care - Home</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <span class="material-symbols-outlined icon-fill">memory</span>
+                <span class="brand-name">Aruna Computers Care</span>
+            </div>
+
+            <!-- Desktop Links Only -->
+            <nav class="nav-links desktop-only">
+                <a href="home.html" class="active"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Shop</a>
+                <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
+            </nav>
+
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <!-- Hero Carousel -->
+        <section class="hero-carousel">
+            <div class="slide active" style="background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%), url('./images/techician.png');">
+                <div class="slide-content">
+                    <span class="hero-subtitle">FAST & RELIABLE</span>
+                    <h2>Computer & Laptop Service</h2>
+                    <p>Doorstep repair & support in Sivakasi</p>
+                    <button class="btn btn-primary">Book Service</button>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%), url('./images/printer.png');">
+                <div class="slide-content">
+                    <span class="hero-subtitle">EXPERT REPAIR</span>
+                    <h2>Printer Repair & Ink</h2>
+                    <p>Repair • Ink Refill • Toner Services</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+
+            <div class="slide" style="background-image: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 100%), url('./images/products.png');">
+                <div class="slide-content">
+                    <span class="hero-subtitle">PREMIUM HARDWARE</span>
+                    <h2>Technology Products</h2>
+                    <p>Laptops • Printers • Accessories</p>
+                    <button class="btn btn-primary">View Products</button>
+                </div>
+            </div>
+
+            <div class="carousel-indicators">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <!-- Two Column Grid -->
+        <div class="grid-2col">
+            
+            <!-- Need Help Form -->
+            <section class="card help-card">
+                <h3>Need Help?</h3>
+                <div class="input-wrapper">
+                    <input type="text" placeholder="Tell us your problem...">
+                    <button class="mic-btn"><span class="material-symbols-outlined">mic</span></button>
+                </div>
+
+                <div class="action-grid">
+                    <button class="action-btn">
+                        <span class="material-symbols-outlined">mic</span>
+                        <span>Speak</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="material-symbols-outlined">photo_camera</span>
+                        <span>Photo</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <span>Location</span>
+                    </button>
+                </div>
+
+                <button class="btn btn-submit">
+                    <span class="material-symbols-outlined">send</span> Send Request
+                </button>
+            </section>
+
+            <!-- Visit Our Shop -->
+            <section class="card shop-card">
+                <h3>Visit Our Shop</h3>
+                <div class="map-preview">
+                    <img src="map-preview.jpg" alt="Shop Location Map">
+                    <div class="map-pin">
+                        <span class="material-symbols-outlined">location_on</span>
+                    </div>
+                </div>
+                <div class="shop-details">
+                    <div>
+                        <p class="shop-name">Aruna Computers Care, Sivakasi</p>
+                        <p class="shop-time">Open Today: 9 AM - 8 PM</p>
+                    </div>
+                    <div class="action-grid">
+                        <button class="action-btn-blue"><span class="material-symbols-outlined">map</span> Directions</button>
+                        <button class="action-btn-blue"><span class="material-symbols-outlined">phone</span> Call</button>
+                        <button class="action-btn-blue"><span class="material-symbols-outlined">chat</span> WhatsApp</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Our Services -->
+        <section class="section-block">
+            <h3>Our Services</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-circle bg-blue"><span class="material-symbols-outlined">laptop_mac</span></div>
+                    <span>Laptop Repair</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle bg-orange"><span class="material-symbols-outlined">desktop_windows</span></div>
+                    <span>Computer Repair</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle bg-slate"><span class="material-symbols-outlined">print</span></div>
+                    <span>Printer Service</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle bg-red"><span class="material-symbols-outlined">videocam</span></div>
+                    <span>CCTV</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle bg-blue-dark"><span class="material-symbols-outlined">router</span></div>
+                    <span>Networking</span>
+                </div>
+                <div class="service-card">
+                    <div class="icon-circle bg-gray"><span class="material-symbols-outlined">shopping_bag</span></div>
+                    <span>Products</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular Products -->
+        <section class="section-block">
+            <div class="section-header">
+                <h3>Popular Products</h3>
+                <a href="product.html" class="link-btn">View All</a>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="dell-laptop.jpg" alt="Dell Vostro Laptop">
+                    </div>
+                    <div class="product-info">
+                        <h4>Dell Vostro Laptop</h4>
+                        <span class="price">₹45,000</span>
+                        <button class="btn btn-primary full-width">View</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Desktop-Only Footer (Wandering South Inspired) -->
+    <footer class="site-footer desktop-only">
+        <div class="footer-container">
+            <div class="footer-col main-col">
+                <h4 class="footer-title">ARUNA COMPUTERS CARE</h4>
+                <p>Complete computer, laptop, printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Services</h5>
+                <ul>
+                    <li><a href="service.html">Laptop & PC Repair</a></li>
+                    <li><a href="service.html">Printer Service & Ink</a></li>
+                    <li><a href="service.html">CCTV Installation</a></li>
+                    <li><a href="service.html">Networking Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Information</h5>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shop Location</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Aruna Computers Care. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar (STRICTLY Hidden on PC) -->
+    <nav class="bottom-nav mobile-only">
+        <a href="home.html" class="active"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+        <a href="service.html"><span class="material-symbols-outlined">build</span><span>Services</span></a>
+        <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span><span>Shop</span></a>
+        <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
