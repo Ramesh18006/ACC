@@ -1,23 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Aruna Computers Care</title>
-    
-    <!-- Google Fonts & Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Products-ACC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#edeeef",
+                "primary-fixed-dim": "#a9c7ff",
+                "surface-dim": "#d9dadb",
+                "surface-container-low": "#f3f4f5",
+                "on-primary-fixed-variant": "#00468c",
+                "error": "#ba1a1a",
+                "on-secondary-fixed-variant": "#693c00",
+                "primary-container": "#1565c0",
+                "on-primary-container": "#dae5ff",
+                "error-container": "#ffdad6",
+                "background": "#f8f9fa",
+                "on-surface-variant": "#424752",
+                "tertiary-fixed-dim": "#b0c6ff",
+                "secondary-fixed-dim": "#ffb870",
+                "inverse-primary": "#a9c7ff",
+                "on-primary-fixed": "#001b3d",
+                "secondary-container": "#ff9800",
+                "on-tertiary-fixed": "#001945",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#dde5ff",
+                "primary": "#004d99",
+                "on-surface": "#191c1d",
+                "on-error": "#ffffff",
+                "tertiary": "#134aa4",
+                "surface-tint": "#005db7",
+                "surface-container-highest": "#e1e3e4",
+                "on-background": "#191c1d",
+                "on-tertiary-fixed-variant": "#00429c",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e1e3e4",
+                "surface-bright": "#f8f9fa",
+                "surface-container-high": "#e7e8e9",
+                "on-secondary-container": "#653900",
+                "on-secondary": "#ffffff",
+                "secondary-fixed": "#ffdcbe",
+                "secondary": "#8b5000",
+                "on-secondary-fixed": "#2c1600",
+                "tertiary-container": "#3563be",
+                "tertiary-fixed": "#d9e2ff",
+                "inverse-on-surface": "#f0f1f2",
+                "surface": "#f8f9fa",
+                "inverse-surface": "#2e3132",
+                "outline-variant": "#c2c6d4",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "outline": "#727783",
+                "primary-fixed": "#d6e3ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "2xl": "20px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "xs": "4px",
+                "xl": "80px",
+                "lg": "48px",
+                "margin-mobile": "16px",
+                "base": "8px",
+                "sm": "12px",
+                "margin-desktop": "64px",
+                "md": "24px"
+        },
+        "fontFamily": {
+                "label-lg": ["Inter"],
+                "title-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "label-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "sans": ["Inter", "sans-serif"]
+        },
+        "fontSize": {
+                "label-lg": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.1px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "title-lg": [
+                        "22px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0.5px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "11px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.5px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "body-md": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0.25px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "57px",
+                        {
+                                "lineHeight": "64px",
+                                "letterSpacing": "-0.25px",
+                                "fontWeight": "700"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        body, h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(248, 249, 250, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body class="bg-gradient-texture">
-
-    <!-- Header / Navbar (Desktop & Mobile Top Header) -->
+<body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col pb-20 md:pb-0 font-sans">
+    <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
             <a href="home.html" class="brand" style="text-decoration: none;">
                 <span class="material-symbols-outlined icon-fill">memory</span>
-                <span class="brand-name">Aruna Computers Care</span>
+                <span class="brand-name">ACC</span>
             </a>
 
             <!-- Desktop Links Only -->
@@ -28,237 +190,214 @@
                 <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
             </nav>
 
-
             <button class="lang-btn">
                 EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
             </button>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="main-container">
+    <!-- Main Content Area with Background Image -->
+    <main class="relative w-full max-w-[1440px] mx-auto flex-grow flex flex-col">
+        <!-- Background Image layer -->
+        <div class="absolute inset-0 z-0 h-[400px] md:h-[600px] w-full bg-cover bg-center bg-no-repeat opacity-40 md:opacity-100" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIRgzJUa1kMf04-H_Lj4lxCaH9K7Kz45GvRfcjevZ0cwwjXBxq4vSnSbdcu3_aPe8c49Pz6DBvX3hKJKok2dsOrIzzdQAqypMFfYcADgymjhywwFE4dxU9MS1CPhJllHF_0xG9nIaOMNpZaNZ1SGDcR1uGSQCAZ8dsLlIzHyI2tzgwRSiceCb6FwCFtPrDYz13jHrYqgIUD4w_5WWWncLK0QY134NB-d7pNFFxiwPz5gzMgWkzMHSa');">
+            <!-- Gradient fade out to background color -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#f8f9fa]/40 via-[#f8f9fa]/80 to-[#f8f9fa]"></div>
+        </div>
 
-        <!-- Hero Header -->
-        <section class="hero-header text-center" style="display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 20px 0;">
-            <h2>🛍️ Explore Products</h2>
-            <p style="margin-bottom: 8px;">Quality Technology Products for Home, Office & Business.</p>
-            
-            <div class="search-box">
-                <span class="material-symbols-outlined search-icon">search</span>
-                <input type="text" placeholder="Search laptops, printers, accessories...">
-                <span class="material-symbols-outlined mic-icon">mic</span>
-            </div>
-        </section>
-        <!-- Categories Grid -->
-        <section class="section-block">
-            <h3>Shop by Category</h3>
-            <div class="categories-grid">
-                <!-- Laptops -->
-                <a href="#" class="category-card">
-                    <div class="icon-circle">
-                        <span class="material-symbols-outlined">laptop_mac</span>
-                    </div>
-                    <span class="category-title">Laptops</span>
-                    <span class="category-sub">High Performance</span>
-                </a>
-                <!-- Desktops -->
-                <a href="#" class="category-card">
-                    <div class="icon-circle">
-                        <span class="material-symbols-outlined">desktop_windows</span>
-                    </div>
-                    <span class="category-title">Desktops</span>
-                    <span class="category-sub">Home & Office</span>
-                </a>
-                <!-- Custom PC -->
-                <a href="#" class="category-card">
-                    <div class="icon-circle">
-                        <span class="material-symbols-outlined">memory</span>
-                    </div>
-                    <span class="category-title">Custom PC</span>
-                    <span class="category-sub">Build Your Own</span>
-                </a>
-                <!-- Printers -->
-                <a href="#" class="category-card">
-                    <div class="icon-circle">
-                        <span class="material-symbols-outlined">print</span>
-                    </div>
-                    <span class="category-title">Printers</span>
-                    <span class="category-sub">Ink & Laser</span>
-                </a>
-                <!-- Accessories -->
-                <a href="#" class="category-card">
-                    <div class="icon-circle">
-                        <span class="material-symbols-outlined">keyboard</span>
-                    </div>
-                    <span class="category-title">Accessories</span>
-                    <span class="category-sub">Keyboards, Mice & More</span>
-                </a>
-            </div>
-        </section>
+        <div class="relative z-10 px-4 md:px-margin-desktop py-6 md:py-lg">
+            <!-- Hero Header & Search -->
+            <section class="max-w-4xl mx-auto text-center mb-8 md:mb-xl pt-4 md:pt-lg flex flex-col items-center">
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-4xl md:text-5xl text-on-surface">domain</span>
+                    <h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold">Explore</h1>
+                </div>
+                <h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold mb-3 md:mb-4">Products</h1>
+                <p class="text-body-md md:text-title-lg font-body-md md:font-title-lg text-on-surface-variant mb-6 md:mb-lg font-normal max-w-md mx-auto">Quality Technology Products for Home, Office & Business.</p>
+                
+                <div class="relative w-full max-w-2xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300 rounded-full bg-white">
+                    <span class="material-symbols-outlined absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-primary">search</span>
+                    <input class="w-full h-12 md:h-14 pl-12 md:pl-14 pr-12 md:pr-16 rounded-full border border-outline-variant/30 bg-transparent focus:bg-white focus:ring-2 focus:ring-primary text-body-md md:text-body-lg placeholder:text-outline outline-none" placeholder="Search laptops, printers, accessories..." type="text">
+                    <button class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 p-1.5 md:p-2 text-on-surface-variant hover:text-primary hover:bg-primary/10 rounded-full transition-colors">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">mic</span>
+                    </button>
+                </div>
+            </section>
 
-        <!-- Best Products Section -->
-        <section class="section-block">
-            <div class="section-header">
-                <h3>Best Products</h3>
-                <a href="#" class="link-btn">View All</a>
-            </div>
-
-            <div class="products-grid">
-                <!-- Product Card 1 -->
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <span class="badge-tag">Top Rated</span>
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXosrxHmmJyWVbFaa5JIAelDuohYiVcH6yoIZll7CPawV3pty3Oqn4zk7F6n8avKBfhTC8H5O2WISoRZYBRoITwo6ZqAjywm_G3VkqRFSJBZKvoDiHD5quyrZnAbVOjbTd5zl7XXtPOLvD8exSZXc-wt4rqMJOT7WWb44m6U1qqe2gOQ1Lc3ZPK8824o-qIj7BV-aq17QK84RvgjDCOPOwqBcIDoBOFJg61tnHBriza3HLYHjJIxy_" alt="Dell XPS 15">
-                    </div>
-                    <div class="product-details">
-                        <div class="rating">
-                            <span class="material-symbols-outlined star-icon">star</span>
-                            <span class="rating-score">4.9</span>
-                            <span class="rating-count">(128)</span>
+            <!-- Browse Categories -->
+            <section class="mb-10 md:mb-xl">
+                <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface mb-4 md:mb-md font-semibold text-left">Browse Categories</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-gutter">
+                    <!-- Category Card 1 -->
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">laptop_mac</span>
                         </div>
-                        <h4>Dell XPS 15</h4>
-                        <p>High-performance laptop with 4K OLED display & Intel Core i9.</p>
-                        <div class="product-bottom">
-                            <span class="price">₹1,85,000</span>
-                            <button class="cart-btn" title="Add to Cart">
-                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                            </button>
+                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Laptops</h3>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">High Performance</p>
+                    </div>
+                    <!-- Category Card 2 -->
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">desktop_windows</span>
                         </div>
+                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Desktops</h3>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Home & Office</p>
+                    </div>
+                    <!-- Category Card 3 -->
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">print</span>
+                        </div>
+                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Printers</h3>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Ink & Laser</p>
+                    </div>
+                    <!-- Category Card 4 -->
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">memory</span>
+                        </div>
+                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Custom PC</h3>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Build Your Own</p>
+                    </div>
+                    <!-- Category Card 5 (Accessories) -->
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all col-span-2 md:col-span-1 mx-auto w-[calc(50%-0.5rem)] md:w-auto">
+                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">keyboard</span>
+                        </div>
+                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Accessories</h3>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Keyboard, Mouse & More</p>
                     </div>
                 </div>
+            </section>
 
-                <!-- Product Card 2 -->
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZlnRimdTDDVzZVaefBN0l4lO4V7YvWVKoRHYOSbKbrtQ1p8kNvFjDIdRJMRk7Ch7adhaMdun7aiNRxPbClNLqc5bbykplixABg4JxVPupBOHpfxvfimiukDIO07VYKsq1SPRsofe5rW_1f16H9aDO4dSrLY7MxWYgY4Tbelh7fB-fwWyAVUVPv9uF6nMnN7j_lUqyWixIa1ykuv8_AEkkjBZb7gTu_NuCmAgRapsdtfrnhIPoqkV" alt="Asus ROG Strix">
-                    </div>
-                    <div class="product-details">
-                        <div class="rating">
-                            <span class="material-symbols-outlined star-icon">star</span>
-                            <span class="rating-score">4.7</span>
-                            <span class="rating-count">(95)</span>
-                        </div>
-                        <h4>Asus ROG Strix</h4>
-                        <p>Ultimate gaming desktop PC with RTX 4080 and liquid cooling.</p>
-                        <div class="product-bottom">
-                            <span class="price">₹2,40,000</span>
-                            <button class="cart-btn" title="Add to Cart">
-                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                            </button>
-                        </div>
-                    </div>
+            <!-- Featured Products Section -->
+            <section class="mb-10 md:mb-xl">
+                <div class="flex items-center justify-between mb-4 md:mb-md">
+                    <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface font-semibold">Featured Products</h2>
+                    <a href="#" class="text-primary text-label-lg font-label-lg hover:underline font-semibold">View All</a>
                 </div>
-
-                <!-- Product Card 3 -->
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <span class="badge-tag">Bestseller</span>
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjLwmKDuuqSSw3FnyPeXbNjMr0Bp8bUZWHaL6YjQBOJVg1tikoiuzjf8b_Tiv1bskUHS29mBoa966GAVy-uD_85B9PtVeXAofe1VDMYlxmjDLg6OwH9ClAyT2Xbga184SbL8n-CSnWk_YakaI9yn2op8vdK7Xc34TahHLvQ18RuirCrwlgWJO01WxUw3vo9OMpSzW1c-MjuxTO5cixPCQuSXRcakFMGs1ewRh-sHmyYfdpjteqVleq" alt="HP LaserJet Pro">
-                    </div>
-                    <div class="product-details">
-                        <div class="rating">
-                            <span class="material-symbols-outlined star-icon">star</span>
-                            <span class="rating-score">4.8</span>
-                            <span class="rating-count">(210)</span>
+                
+                <!-- Horizontal Scroll Container for Mobile, Grid for Desktop -->
+                <div class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-gutter pb-4 md:pb-0 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x">
+                    <!-- Product Card 1 -->
+                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
+                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
+                            <img alt="HP EliteBook 840 G8" class="w-[85%] h-[85%] object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXosrxHmmJyWVbFaa5JIAelDuohYiVcH6yoIZll7CPawV3pty3Oqn4zk7F6n8avKBfhTC8H5O2WISoRZYBRoITwo6ZqAjywm_G3VkqRFSJBZKvoDiHD5quyrZnAbVOjbTd5zl7XXtPOLvD8exSZXc-wt4rqMJOT7WWb44m6U1qqe2gOQ1Lc3ZPK8824o-qIj7BV-aq17QK84RvgjDCOPOwqBcIDoBOFJg61tnHBriza3HLYHjJIxy_">
+                            <span class="absolute top-2 right-2 bg-[#ff9800] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Bestseller</span>
                         </div>
-                        <h4>HP LaserJet Pro</h4>
-                        <p>Fast, reliable wireless laser printer for office and business.</p>
-                        <div class="product-bottom">
-                            <span class="price">₹25,500</span>
-                            <button class="cart-btn" title="Add to Cart">
-                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                            </button>
+                        <div class="px-2 flex flex-col flex-grow">
+                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">HP EliteBook 840 G8</h3>
+                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Intel Core i7 11th Gen, 16GB RAM, 512GB SSD, 14" FHD Display</p>
+                            <div class="mt-auto flex items-center justify-between">
+                                <span class="text-title-lg font-title-lg font-bold text-primary">₹85,000</span>
+                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Product Card 4 -->
-                <div class="product-card">
-                    <div class="product-img-box">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJktbE_XZSp6Ax-2mJQScRIFxbWVccMfezQAWzgIFHc5kqgJ1p3Gj3JBpRe3nITs6eLstkm7ayKus9YXDwrBb_KG1OvJXJv0k343VCUY-jEgGyOMxjQ7e_bWwrRiWtbHRSBu8vhy6tQ8T0rsG36inNzSXFjSdsXdeVVYBhMitPkhWMrMa6VKf72GpO0bbXzOy9Bkny4l1mL4dswmXZ7EZffvE2FMfgGSNChhBx0cUK63hb_1pFRIBk" alt="Logitech MX Master 3S">
-                    </div>
-                    <div class="product-details">
-                        <div class="rating">
-                            <span class="material-symbols-outlined star-icon">star</span>
-                            <span class="rating-score">4.9</span>
-                            <span class="rating-count">(450)</span>
+                    
+                    <!-- Product Card 2 -->
+                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
+                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
+                            <img alt="Logitech MX Master 3S" class="w-[70%] h-[70%] object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJktbE_XZSp6Ax-2mJQScRIFxbWVccMfezQAWzgIFHc5kqgJ1p3Gj3JBpRe3nITs6eLstkm7ayKus9YXDwrBb_KG1OvJXJv0k343VCUY-jEgGyOMxjQ7e_bWwrRiWtbHRSBu8vhy6tQ8T0rsG36inNzSXFjSdsXdeVVYBhMitPkhWMrMa6VKf72GpO0bbXzOy9Bkny4l1mL4dswmXZ7EZffvE2FMfgGSNChhBx0cUK63hb_1pFRIBk">
                         </div>
-                        <h4>Logitech MX Master 3S</h4>
-                        <p>Advanced wireless mouse with ergonomic design & ultrafast scrolling.</p>
-                        <div class="product-bottom">
-                            <span class="price">₹9,995</span>
-                            <button class="cart-btn" title="Add to Cart">
-                                <span class="material-symbols-outlined">add_shopping_cart</span>
-                            </button>
+                        <div class="px-2 flex flex-col flex-grow">
+                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">Logitech MX Master 3S</h3>
+                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Wireless Performance Mouse, Ultra-fast Scrolling, Ergonomic Design</p>
+                            <div class="mt-auto flex items-center justify-between">
+                                <span class="text-title-lg font-title-lg font-bold text-primary">₹9,995</span>
+                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product Card 3 -->
+                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
+                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
+                            <img alt="HP LaserJet Pro" class="w-[70%] h-[70%] object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjLwmKDuuqSSw3FnyPeXbNjMr0Bp8bUZWHaL6YjQBOJVg1tikoiuzjf8b_Tiv1bskUHS29mBoa966GAVy-uD_85B9PtVeXAofe1VDMYlxmjDLg6OwH9ClAyT2Xbga184SbL8n-CSnWk_YakaI9yn2op8vdK7Xc34TahHLvQ18RuirCrwlgWJO01WxUw3vo9OMpSzW1c-MjuxTO5cixPCQuSXRcakFMGs1ewRh-sHmyYfdpjteqVleq">
+                        </div>
+                        <div class="px-2 flex flex-col flex-grow">
+                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">HP LaserJet Pro</h3>
+                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Wireless Laser Printer, High Speed Print, Ideal for Small Business</p>
+                            <div class="mt-auto flex items-center justify-between">
+                                <span class="text-title-lg font-title-lg font-bold text-primary">₹25,500</span>
+                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
+                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Trust Section -->
-        <section class="trust-section">
-            <h3 class="text-center">Why Buy From Aruna?</h3>
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <span class="material-symbols-outlined text-primary">verified</span>
-                    <h4>Genuine Products</h4>
+            <!-- Why Buy From Aruna? Section -->
+            <section class="mt-12 md:mt-24 mb-16 md:mb-16">
+                <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface text-center mb-8 md:mb-12 font-medium">Why Buy From Aruna?</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
+                    <!-- Feature 1 -->
+                    <div class="flex flex-col items-center text-center gap-3">
+                        <span class="material-symbols-outlined text-[36px] text-primary">verified</span>
+                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Genuine Products</span>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="flex flex-col items-center text-center gap-3">
+                        <span class="material-symbols-outlined text-[36px] text-primary">payments</span>
+                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Competitive Price</span>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="flex flex-col items-center text-center gap-3">
+                        <span class="material-symbols-outlined text-[36px] text-primary">support_agent</span>
+                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Expert Support</span>
+                    </div>
+                    <!-- Feature 4 -->
+                    <div class="flex flex-col items-center text-center gap-3">
+                        <span class="material-symbols-outlined text-[36px] text-primary">gpp_good</span>
+                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Secure Payment</span>
+                    </div>
                 </div>
-                <div class="trust-item">
-                    <span class="material-symbols-outlined text-primary">payments</span>
-                    <h4>Competitive Price</h4>
-                </div>
-                <div class="trust-item">
-                    <span class="material-symbols-outlined text-primary">support_agent</span>
-                    <h4>Expert Advice</h4>
-                </div>
-                <div class="trust-item">
-                    <span class="material-symbols-outlined text-primary">shield</span>
-                    <h4>Official Warranty</h4>
-                </div>
-            </div>
-        </section>
-
+            </section>
+        </div>
     </main>
 
-    <!-- Desktop Footer (Hidden on Mobile) -->
-    <footer class="site-footer desktop-only">
-        <div class="footer-container">
-            <div class="footer-col main-col">
-                <h4 class="footer-title">ARUNA COMPUTERS CARE</h4>
-                <p>We provide premium technology solutions, high-quality hardware, and reliable repair services in Sivakasi. Your trusted tech partner.</p>
+    <!-- Desktop-Only Footer -->
+    <footer class="hidden md:block w-full py-12 px-4 lg:px-margin-desktop bg-surface-container-highest max-w-[1440px] mx-auto mt-auto border-t border-outline-variant/50">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 w-full">
+            <div class="md:col-span-6 flex flex-col gap-4">
+                <h4 class="text-title-lg font-headline-lg font-bold text-on-surface uppercase tracking-wider">Aruna Computers Care</h4>
+                <p class="text-body-md font-body-md text-on-surface-variant max-w-md">Complete computer, laptop, printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
             </div>
-            <div class="footer-col">
-                <h5>Quick Links</h5>
-                <ul>
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="product.html">Products</a></li>
-                    <li><a href="service.html">Services & Requests</a></li>
-                    <li><a href="#">Support & Warranty</a></li>
+            <div class="md:col-span-3 flex flex-col gap-4">
+                <h5 class="text-label-lg font-label-lg font-bold text-on-surface">Services</h5>
+                <ul class="flex flex-col gap-2">
+                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Laptop & PC Repair</a></li>
+                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Printer Service & Ink</a></li>
+                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">CCTV Installation</a></li>
+                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Networking Solutions</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h5>Contact Us</h5>
-                <ul>
-                    <li>Sivakasi, Tamil Nadu 626123</li>
-                    <li>+91 98765 43210</li>
-                    <li>info@arunacomputers.in</li>
+            <div class="md:col-span-3 flex flex-col gap-4">
+                <h5 class="text-label-lg font-label-lg font-bold text-on-surface">Information</h5>
+                <ul class="flex flex-col gap-2">
+                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Terms & Conditions</a></li>
+                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
+                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Shop Location</a></li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Aruna Computers Care. All rights reserved. Premium Tech Solutions in Sivakasi.</p>
+        <div class="w-full mt-12 pt-6 border-t border-outline-variant/30 text-center">
+            <p class="text-body-md font-body-md text-on-surface-variant">© 2026 Aruna Computers Care. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation Bar (Hidden on PC) -->
+    <!-- Mobile Bottom Navigation Bar -->
     <nav class="bottom-nav mobile-only">
         <a href="home.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
         <a href="service.html"><span class="material-symbols-outlined">build</span><span>Services</span></a>
-        <a href="product.html" class="active"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_bag</span><span>Products</span></a>
+        <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span><span>Products</span></a>
         <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
     </nav>
-
-    <script src="script.js"></script>
-</body>
-</html>
+</body></html>
