@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Custom PCs & Desktops - ACC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container": "#edeeef",
+                "primary-fixed-dim": "#a9c7ff",
+                "surface-dim": "#d9dadb",
+                "surface-container-low": "#f3f4f5",
+                "on-primary-fixed-variant": "#00468c",
+                "error": "#ba1a1a",
+                "on-secondary-fixed-variant": "#693c00",
+                "primary-container": "#1565c0",
+                "on-primary-container": "#dae5ff",
+                "error-container": "#ffdad6",
+                "background": "#f8f9fa",
+                "on-surface-variant": "#424752",
+                "tertiary-fixed-dim": "#b0c6ff",
+                "secondary-fixed-dim": "#ffb870",
+                "inverse-primary": "#a9c7ff",
+                "on-primary-fixed": "#001b3d",
+                "secondary-container": "#ff9800",
+                "on-tertiary-fixed": "#001945",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#dde5ff",
+                "primary": "#004d99",
+                "on-surface": "#191c1d",
+                "on-error": "#ffffff",
+                "tertiary": "#134aa4",
+                "surface-tint": "#005db7",
+                "surface-container-highest": "#e1e3e4",
+                "on-background": "#191c1d",
+                "on-tertiary-fixed-variant": "#00429c",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e1e3e4",
+                "surface-bright": "#f8f9fa",
+                "surface-container-high": "#e7e8e9",
+                "on-secondary-container": "#653900",
+                "on-secondary": "#ffffff",
+                "secondary-fixed": "#ffdcbe",
+                "secondary": "#8b5000",
+                "on-secondary-fixed": "#2c1600",
+                "tertiary-container": "#3563be",
+                "tertiary-fixed": "#d9e2ff",
+                "inverse-on-surface": "#f0f1f2",
+                "surface": "#f8f9fa",
+                "inverse-surface": "#2e3132",
+                "outline-variant": "#c2c6d4",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "outline": "#727783",
+                "primary-fixed": "#d6e3ff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px",
+                "2xl": "20px"
+        },
+        "spacing": {
+                "gutter": "24px",
+                "xs": "4px",
+                "xl": "80px",
+                "lg": "48px",
+                "margin-mobile": "16px",
+                "base": "8px",
+                "sm": "12px",
+                "margin-desktop": "64px",
+                "md": "24px"
+        },
+        "fontFamily": {
+                "label-lg": ["Inter"],
+                "title-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "label-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "sans": ["Inter", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+        body, h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+</head>
+<body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans">
+    
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="product.html" class="brand" style="text-decoration: none;">
+                <span class="material-symbols-outlined icon-fill">arrow_back</span>
+                <span class="brand-name">Products</span>
+            </a>
+
+            <!-- Desktop Links Only -->
+
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./images/Desktop.png');">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight text-center px-4">Master Your Workspace</h1>
+        <p class="text-md md:text-lg font-medium opacity-90 text-center px-4">Custom PCs & Premium Desktops</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-8 md:py-12 flex flex-col gap-10 flex-grow">
+        
+        <!-- Filters -->
+        <section class="flex flex-col gap-3">
+            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider">Filter by Price</h3>
+            <div class="flex flex-wrap gap-2 md:gap-3" id="price-filters">
+                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-primary text-white shadow-sm filter-btn" data-min="0" data-max="Infinity">ALL Prices</button>
+                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="0" data-max="30000">Under ₹30,000</button>
+                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="30000" data-max="50000">₹30,000 - ₹50,000</button>
+                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="50000" data-max="80000">₹50,000 - ₹80,000</button>
+                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="80000" data-max="Infinity">₹80,000+</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Container for Category Sections -->
+        <div id="brands-container" class="flex flex-col gap-12 md:gap-16 pb-12">
+            <div class="flex justify-center py-10 w-full">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            </div>
+        </div>
+
+    </main>
+    
+    <!-- Simple Footer -->
+    <footer class="w-full py-8 px-4 bg-[#e1e3e4] text-center border-t border-outline-variant/30 mt-auto">
+        <p class="text-[12px] text-[#424752] font-medium">© 2026 Aruna Computers Care. All rights reserved.</p>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
+            
+            let allDesktops = [];
+            let currentMin = 0;
+            let currentMax = Infinity;
+
+            Papa.parse(SHEET_URL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const data = results.data;
+                    // Filter only Desktops / PCs
+                    allDesktops = data.filter(item => {
+                        if (!item.Name || !item.Category) return false;
+                        const cat = item.Category.toLowerCase();
+                        return cat.includes('desktop') || cat.includes('pc');
+                    });
+                    renderBrands();
+                },
+                error: function(err) {
+                    document.getElementById('brands-container').innerHTML = '<p class="text-[#ba1a1a] py-8">Failed to load data. Please check your connection.</p>';
+                }
+            });
+
+            function renderBrands() {
+                const container = document.getElementById('brands-container');
+                container.innerHTML = '';
+                
+                // Filter by price
+                const filteredDesktops = allDesktops.filter(desktop => {
+                    const price = parseFloat(desktop.Price) || 0;
+                    return price >= currentMin && price <= currentMax;
+                });
+
+                if (filteredDesktops.length === 0) {
+                    container.innerHTML = '<p class="text-[#424752] py-8 font-medium">No PCs found for this price range.</p>';
+                    return;
+                }
+
+                // Group by Category using Brand column (Expecting "Home & Office" or "Gaming")
+                const categories = {
+                    "Home & Office": [],
+                    "Gaming": [],
+                    "Other": []
+                };
+                
+                filteredDesktops.forEach(desktop => {
+                    const brand = desktop.Brand ? desktop.Brand.trim() : 'Other';
+                    
+                    if (brand.toLowerCase().includes('home') || brand.toLowerCase().includes('office')) {
+                        categories["Home & Office"].push(desktop);
+                    } else if (brand.toLowerCase().includes('gaming')) {
+                        categories["Gaming"].push(desktop);
+                    } else {
+                        categories["Other"].push(desktop);
+                    }
+                });
+
+                // Render each category section
+                for (const [catName, desktops] of Object.entries(categories)) {
+                    if (desktops.length === 0) continue;
+
+                    let description = "";
+                    if (catName === "Home & Office") description = "Reliable, space-saving designs for everyday productivity.";
+                    if (catName === "Gaming") description = "High-performance rigs built for ultimate gaming experiences.";
+                    
+                    let sectionHTML = `
+                        <section class="flex flex-col gap-6">
+                            <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <h2 class="text-[22px] md:text-[28px] font-bold text-[#191c1d]">${catName}</h2>
+                                    ${description ? `<p class="text-[12px] text-[#424752] mt-1">${description}</p>` : ''}
+                                </div>
+                                <a href="#" class="text-[#004d99] text-[12px] font-bold hover:underline hidden md:flex items-center gap-1">View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    `;
+
+                    desktops.forEach(desktop => {
+                        let displayPrice = desktop.Price;
+                        if (!isNaN(parseFloat(displayPrice))) {
+                            displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
+                        }
+                        
+                        const isBestseller = desktop.Indicates && desktop.Indicates.toLowerCase().includes('bestseller');
+                        const badge = isBestseller 
+                            ? `<span class="bg-[#004d99] text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 left-3 shadow-sm">Bestseller</span>` 
+                            : '';
+
+                        sectionHTML += `
+                            <div class="bg-white rounded-[20px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-[#c2c6d4]/40 flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group cursor-pointer">
+                                <div class="w-full aspect-[4/3] bg-[#f3f4f5] rounded-[12px] mb-4 flex items-center justify-center p-6 relative overflow-hidden">
+                                    <img src="${desktop['Image URL']}" alt="${desktop.Name}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300">
+                                    ${badge}
+                                </div>
+                                <h3 class="font-bold text-[16px] text-[#191c1d] mb-1 line-clamp-1">${desktop.Name}</h3>
+                                <p class="text-[11px] text-[#424752] line-clamp-2 mb-4 flex-grow leading-relaxed">${desktop.Description || ''}</p>
+                                <span class="font-extrabold text-[22px] text-[#004d99] mb-4 block">${displayPrice}</span>
+                                <button class="w-full py-2.5 rounded-full border-2 border-[#004d99] text-[#004d99] font-bold text-xs hover:bg-[#004d99] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                                </button>
+                            </div>
+                        `;
+                    });
+
+                    sectionHTML += `</div></section>`;
+                    container.insertAdjacentHTML('beforeend', sectionHTML);
+                }
+            }
+
+            // Filter Buttons Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-primary', 'text-white', 'shadow-sm');
+                        b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+                    });
+                    this.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+                    this.classList.add('bg-primary', 'text-white', 'shadow-sm');
+
+                    currentMin = parseFloat(this.getAttribute('data-min'));
+                    currentMax = parseFloat(this.getAttribute('data-max'));
+                    renderBrands();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

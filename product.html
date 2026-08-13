@@ -237,21 +237,21 @@
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">High Performance</p>
                     </a>
                     <!-- Category Card 3 -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                    <a href="printers.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">print</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Printers</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Ink & Laser</p>
-                    </div>
+                    </a>
                     <!-- Category Card 4 -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                    <a href="desktops.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">memory</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Custom PC</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Build Your Own</p>
-                    </div>
+                    </a>
                     <!-- Category Card 5 (Accessories) -->
                     <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
@@ -382,12 +382,10 @@
                             <div class="px-2 flex flex-col flex-grow">
                                 <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">${product.Name}</h3>
                                 <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">${product.Description || ''}</p>
-                                <div class="mt-auto flex items-center justify-between">
-                                    <span class="text-title-lg font-title-lg font-bold text-primary">${displayPrice}</span>
-                                    <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
-                                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                                    </button>
-                                </div>
+                                <span class="font-extrabold text-[22px] text-[#004d99] mb-4 block mt-auto">${displayPrice}</span>
+                                <button class="w-full py-2.5 rounded-full border-2 border-[#004d99] text-[#004d99] font-bold text-xs hover:bg-[#004d99] hover:text-white transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
+                                </button>
                             </div>
                         </div>
                         `;
