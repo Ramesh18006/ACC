@@ -105,7 +105,7 @@
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="product.html" class="brand" style="text-decoration: none;">
+            <a href="product.html#categories" class="brand" style="text-decoration: none;">
                 <span class="material-symbols-outlined icon-fill">arrow_back</span>
                 <span class="brand-name">Products</span>
             </a>
@@ -119,9 +119,13 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-white" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./images/Desktop.png');">
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight text-center px-4">Master Your Workspace</h1>
-        <p class="text-md md:text-lg font-medium opacity-90 text-center px-4">Custom PCs & Premium Desktops</p>
+    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-[#191c1d]" style="background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=2000');">
+        <div class="absolute inset-0 bg-[#f8f9fa]/50 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f9fa]/50 to-[#f8f9fa] z-0"></div>
+        <div class="relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm px-4">Master Your Workspace</h1>
+            <p class="text-md md:text-lg font-medium opacity-90 px-4 drop-shadow-sm">Custom PCs & Premium Desktops</p>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -139,7 +143,13 @@
             </div>
         </section>
 
-        <!-- Dynamic Container for Category Sections -->
+        <!-- Search Indicator -->
+        <div id="search-indicator" class="hidden -mt-4 mb-4 flex-wrap items-center gap-3">
+            <span class="text-sm md:text-base text-on-surface-variant font-medium">Search results for: "<strong id="search-term-display" class="text-primary"></strong>"</span>
+            <button id="clear-search-btn" class="text-xs bg-error/10 text-error px-3 py-1.5 rounded-full font-bold hover:bg-error hover:text-white transition-colors cursor-pointer flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">close</span> Clear Search</button>
+        </div>
+
+        <!-- Dynamic Container for Brand Sections -->
         <div id="brands-container" class="flex flex-col gap-12 md:gap-16 pb-12">
             <div class="flex justify-center py-10 w-full">
                 <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -161,6 +171,17 @@
             let allDesktops = [];
             let currentMin = 0;
             let currentMax = Infinity;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchTerm = urlParams.get('search');
+            if (searchTerm) {
+                document.getElementById('search-indicator').classList.remove('hidden');
+                document.getElementById('search-indicator').classList.add('flex');
+                document.getElementById('search-term-display').textContent = searchTerm;
+                document.getElementById('clear-search-btn').addEventListener('click', () => {
+                    window.location.href = window.location.pathname;
+                });
+            }
 
             Papa.parse(SHEET_URL, {
                 download: true,
@@ -184,10 +205,20 @@
                 const container = document.getElementById('brands-container');
                 container.innerHTML = '';
                 
-                // Filter by price
-                const filteredDesktops = allDesktops.filter(desktop => {
-                    const price = parseFloat(desktop.Price) || 0;
-                    return price >= currentMin && price <= currentMax;
+                // Filter by price and search term
+                const filteredDesktops = allDesktops.filter(item => {
+                    const price = parseFloat(item.Price) || 0;
+                    const priceMatch = price >= currentMin && price <= currentMax;
+                    
+                    let searchMatch = true;
+                    if (searchTerm) {
+                        const q = searchTerm.toLowerCase();
+                        searchMatch = (item.Name && item.Name.toLowerCase().includes(q)) || 
+                                      (item.Brand && item.Brand.toLowerCase().includes(q)) ||
+                                      (item.Description && item.Description.toLowerCase().includes(q));
+                    }
+                    
+                    return priceMatch && searchMatch;
                 });
 
                 if (filteredDesktops.length === 0) {

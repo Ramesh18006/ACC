@@ -105,7 +105,7 @@
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
-            <a href="product.html" class="brand" style="text-decoration: none;">
+            <a href="product.html#categories" class="brand" style="text-decoration: none;">
                 <span class="material-symbols-outlined icon-fill">arrow_back</span>
                 <span class="brand-name">Products</span>
             </a>
@@ -119,8 +119,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-start pl-8 md:pl-24 text-white" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/printers.png');">
-        <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-md">Professional Printing</h1>
+    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-start pl-8 md:pl-24 text-[#191c1d]" style="background-image: url('images/printers.png');">
+        <div class="absolute inset-0 bg-[#f8f9fa]/50 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f9fa]/50 to-[#f8f9fa] z-0"></div>
+        <div class="relative z-10">
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm">Professional Printing</h1>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -137,6 +141,12 @@
                 <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="30000" data-max="Infinity">₹30,000+</button>
             </div>
         </section>
+
+        <!-- Search Indicator -->
+        <div id="search-indicator" class="hidden -mt-4 mb-4 flex-wrap items-center gap-3">
+            <span class="text-sm md:text-base text-on-surface-variant font-medium">Search results for: "<strong id="search-term-display" class="text-primary"></strong>"</span>
+            <button id="clear-search-btn" class="text-xs bg-error/10 text-error px-3 py-1.5 rounded-full font-bold hover:bg-error hover:text-white transition-colors cursor-pointer flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">close</span> Clear Search</button>
+        </div>
 
         <!-- Dynamic Container for Brand Sections -->
         <div id="brands-container" class="flex flex-col gap-12 md:gap-16 pb-12">
@@ -161,6 +171,17 @@
             let currentMin = 0;
             let currentMax = Infinity;
 
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchTerm = urlParams.get('search');
+            if (searchTerm) {
+                document.getElementById('search-indicator').classList.remove('hidden');
+                document.getElementById('search-indicator').classList.add('flex');
+                document.getElementById('search-term-display').textContent = searchTerm;
+                document.getElementById('clear-search-btn').addEventListener('click', () => {
+                    window.location.href = window.location.pathname;
+                });
+            }
+
             Papa.parse(SHEET_URL, {
                 download: true,
                 header: true,
@@ -182,10 +203,20 @@
                 const container = document.getElementById('brands-container');
                 container.innerHTML = '';
                 
-                // Filter by price
+                // Filter by price and search term
                 const filteredPrinters = allPrinters.filter(printer => {
                     const price = parseFloat(printer.Price) || 0;
-                    return price >= currentMin && price <= currentMax;
+                    const priceMatch = price >= currentMin && price <= currentMax;
+                    
+                    let searchMatch = true;
+                    if (searchTerm) {
+                        const q = searchTerm.toLowerCase();
+                        searchMatch = (printer.Name && printer.Name.toLowerCase().includes(q)) || 
+                                      (printer.Brand && printer.Brand.toLowerCase().includes(q)) ||
+                                      (printer.Description && printer.Description.toLowerCase().includes(q));
+                    }
+                    
+                    return priceMatch && searchMatch;
                 });
 
                 if (filteredPrinters.length === 0) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" style=""><head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Premium Laptops - ACC</title>
+<title>Accessories - ACC</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
@@ -119,31 +119,20 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-[#191c1d]" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2000');">
+    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-[#191c1d]" style="background-image: url('images/accessories.png');">
         <div class="absolute inset-0 bg-[#f8f9fa]/50 z-0"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f9fa]/50 to-[#f8f9fa] z-0"></div>
         <div class="relative z-10 text-center">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm px-4">Premium Laptops</h1>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm px-4">Essential Gear</h1>
+            <p class="text-md md:text-lg font-medium opacity-90 px-4 drop-shadow-sm">Level up your setup with professional grade peripherals.</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-8 md:py-12 flex flex-col gap-10 flex-grow">
         
-        <!-- Filters -->
-        <section class="flex flex-col gap-3">
-            <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider">Filter by Price</h3>
-            <div class="flex flex-wrap gap-2 md:gap-3" id="price-filters">
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-primary text-white shadow-sm filter-btn" data-min="0" data-max="Infinity">ALL Prices</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="0" data-max="50000">Under ₹50,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="50000" data-max="80000">₹50,000 - ₹80,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="80000" data-max="100000">₹80,000 - ₹1,00,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="100000" data-max="Infinity">₹1,00,000+</button>
-            </div>
-        </section>
-
         <!-- Search Indicator -->
-        <div id="search-indicator" class="hidden -mt-4 mb-4 flex-wrap items-center gap-3">
+        <div id="search-indicator" class="hidden -mb-4 flex-wrap items-center gap-3">
             <span class="text-sm md:text-base text-on-surface-variant font-medium">Search results for: "<strong id="search-term-display" class="text-primary"></strong>"</span>
             <button id="clear-search-btn" class="text-xs bg-error/10 text-error px-3 py-1.5 rounded-full font-bold hover:bg-error hover:text-white transition-colors cursor-pointer flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">close</span> Clear Search</button>
         </div>
@@ -162,13 +151,12 @@
         <p class="text-[12px] text-[#424752] font-medium">© 2026 Aruna Computers Care. All rights reserved.</p>
     </footer>
 
-
     <!-- JS Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
             
-            let allLaptops = [];
+            let allAccessories = [];
             let currentMin = 0;
             let currentMax = Infinity;
 
@@ -188,10 +176,12 @@
                 header: true,
                 complete: function(results) {
                     const data = results.data;
-                    // Filter only Laptops
-                    allLaptops = data.filter(item => {
+                    // Filter only Accessories
+                    allAccessories = data.filter(item => {
                         if (!item.Name || !item.Category) return false;
-                        return item.Category.toLowerCase().includes('laptop');
+                        const cat = item.Category.toLowerCase();
+                        const brand = (item.Brand || '').toLowerCase();
+                        return cat.includes('accessory') || cat.includes('accessories') || cat.includes('component') || cat.includes('keyboard') || cat.includes('mouse') || brand.includes('keyboard') || brand.includes('mouse');
                     });
                     renderBrands();
                 },
@@ -205,66 +195,71 @@
                 container.innerHTML = '';
                 
                 // Filter by price and search term
-                const filteredLaptops = allLaptops.filter(laptop => {
-                    const price = parseFloat(laptop.Price) || 0;
+                const filteredAccessories = allAccessories.filter(item => {
+                    const price = parseFloat(item.Price) || 0;
                     const priceMatch = price >= currentMin && price <= currentMax;
                     
                     let searchMatch = true;
                     if (searchTerm) {
                         const q = searchTerm.toLowerCase();
-                        searchMatch = (laptop.Name && laptop.Name.toLowerCase().includes(q)) || 
-                                      (laptop.Brand && laptop.Brand.toLowerCase().includes(q)) ||
-                                      (laptop.Description && laptop.Description.toLowerCase().includes(q));
+                        searchMatch = (item.Name && item.Name.toLowerCase().includes(q)) || 
+                                      (item.Brand && item.Brand.toLowerCase().includes(q)) ||
+                                      (item.Description && item.Description.toLowerCase().includes(q));
                     }
                     
                     return priceMatch && searchMatch;
                 });
 
-                if (filteredLaptops.length === 0) {
-                    container.innerHTML = '<p class="text-[#424752] py-8 font-medium">No laptops found for this price range.</p>';
+                if (filteredAccessories.length === 0) {
+                    container.innerHTML = '<p class="text-[#424752] py-8 font-medium">No accessories found for this price range.</p>';
                     return;
                 }
 
                 // Group by Brand
                 const brands = {};
-                filteredLaptops.forEach(laptop => {
-                    const brand = laptop.Brand ? laptop.Brand.trim() : 'Other';
+                filteredAccessories.forEach(item => {
+                    const brand = item.Brand ? item.Brand.trim() : 'Other Accessories';
                     if (!brands[brand]) brands[brand] = [];
-                    brands[brand].push(laptop);
+                    brands[brand].push(item);
                 });
 
                 // Render each brand section
-                for (const [brand, laptops] of Object.entries(brands)) {
-                    const title = brand.toLowerCase().includes('laptop') ? brand : `${brand} Laptops`;
-                    
+                for (const [brand, items] of Object.entries(brands)) {
                     let sectionHTML = `
                         <section class="flex flex-col gap-6">
-                            <div class="flex items-center gap-3">
-                                <div class="h-[2px] w-8 bg-[#ff9800]"></div>
-                                <h2 class="text-[22px] md:text-[28px] font-bold text-[#191c1d]">${title}</h2>
+                            <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-outline-variant/30 pb-4">
+                                <div>
+                                    <h2 class="text-[22px] md:text-[28px] font-bold text-[#191c1d]">${brand}</h2>
+                                </div>
+                                <a href="#" class="text-[#004d99] text-[12px] font-bold hover:underline hidden md:flex items-center gap-1">View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     `;
 
-                    laptops.forEach(laptop => {
-                        let displayPrice = laptop.Price;
+                    items.forEach(item => {
+                        let displayPrice = item.Price;
                         if (!isNaN(parseFloat(displayPrice))) {
                             displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
                         }
                         
-                        const isRefurbished = laptop.Indicates && laptop.Indicates.toLowerCase().includes('refurbished');
-                        const badge = isRefurbished 
-                            ? `<span class="bg-[#e7e8e9] text-[#191c1d] border border-[#c2c6d4] text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 left-3 shadow-sm">Certified Refurbished</span>` 
-                            : '';
+                        const isBestseller = item.Indicates && item.Indicates.toLowerCase().includes('bestseller');
+                        const isNew = item.Indicates && item.Indicates.toLowerCase().includes('new');
+                        
+                        let badge = '';
+                        if (isBestseller) {
+                            badge = `<span class="bg-[#ff9800] text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 right-3 shadow-sm">Bestseller</span>`;
+                        } else if (isNew) {
+                            badge = `<span class="bg-[#004d99] text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 right-3 shadow-sm">New Arrival</span>`;
+                        }
 
                         sectionHTML += `
                             <div class="bg-white rounded-[20px] p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-[#c2c6d4]/40 flex flex-col hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group cursor-pointer">
                                 <div class="w-full aspect-[4/3] bg-[#f3f4f5] rounded-[12px] mb-4 flex items-center justify-center p-6 relative overflow-hidden">
-                                    <img src="${laptop['Image URL']}" alt="${laptop.Name}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300">
+                                    <img src="${item['Image URL']}" alt="${item.Name}" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300">
                                     ${badge}
                                 </div>
-                                <h3 class="font-bold text-[16px] text-[#191c1d] mb-1 line-clamp-1">${laptop.Name}</h3>
-                                <p class="text-[11px] text-[#424752] line-clamp-2 mb-4 flex-grow leading-relaxed">${laptop.Description || ''}</p>
+                                <h3 class="font-bold text-[16px] text-[#191c1d] mb-1 line-clamp-1">${item.Name}</h3>
+                                <p class="text-[11px] text-[#424752] line-clamp-2 mb-4 flex-grow leading-relaxed">${item.Description || ''}</p>
                                 <span class="font-extrabold text-[22px] text-[#004d99] mb-4 block">${displayPrice}</span>
                                 <button class="w-full py-2.5 rounded-full border-2 border-[#004d99] text-[#004d99] font-bold text-xs hover:bg-[#004d99] hover:text-white transition-colors flex items-center justify-center gap-2">
                                     <span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart

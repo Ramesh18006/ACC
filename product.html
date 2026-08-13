@@ -217,15 +217,15 @@
                 
                 <div class="relative w-full max-w-2xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300 rounded-full bg-white">
                     <span class="material-symbols-outlined absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-primary">search</span>
-                    <input class="w-full h-12 md:h-14 pl-12 md:pl-14 pr-12 md:pr-16 rounded-full border border-outline-variant/30 bg-transparent focus:bg-white focus:ring-2 focus:ring-primary text-body-md md:text-body-lg placeholder:text-outline outline-none" placeholder="Search laptops, printers, accessories..." type="text">
-                    <button class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 p-1.5 md:p-2 text-on-surface-variant hover:text-primary hover:bg-primary/10 rounded-full transition-colors">
-                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">mic</span>
+                    <input id="search-input" class="w-full h-12 md:h-14 pl-12 md:pl-14 pr-12 md:pr-16 rounded-full border border-outline-variant/30 bg-transparent focus:bg-white focus:ring-2 focus:ring-primary text-body-md md:text-body-lg placeholder:text-outline outline-none" placeholder="Search laptops, printers, accessories..." type="text">
+                    <button id="search-btn" class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 p-1.5 md:p-2 text-on-surface-variant hover:text-primary hover:bg-primary/10 rounded-full transition-colors cursor-pointer">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">search</span>
                     </button>
                 </div>
             </section>
 
             <!-- Browse Categories -->
-            <section class="mb-10 md:mb-xl">
+            <section id="categories" class="mb-10 md:mb-xl scroll-mt-24">
                 <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface mb-4 md:mb-md font-semibold text-left">Browse Categories</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
                     <!-- Category Card 1 -->
@@ -253,13 +253,13 @@
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Build Your Own</p>
                     </a>
                     <!-- Category Card 5 (Accessories) -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                    <a href="accessories.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">keyboard</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Accessories</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Keyboard, Mouse & More</p>
-                    </div>
+                    </a>
                 </div>
             </section>
 
@@ -270,12 +270,18 @@
                     <a href="#" class="text-primary text-label-lg font-label-lg hover:underline font-semibold">View All</a>
                 </div>
                 
-                <!-- Horizontal Scroll Container for Mobile, Grid for Desktop -->
-                <div id="products-container" class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-gutter pb-4 md:pb-0 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x">
-                    <!-- Products will be injected here by JavaScript -->
-                    <div class="col-span-full flex justify-center items-center py-12 w-full">
-                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                <!-- Horizontal Scroll Container for Mobile and Desktop -->
+                <div class="relative group">
+                    <div id="products-container" class="flex overflow-x-auto gap-4 md:gap-gutter pb-4 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x scroll-smooth">
+                        <!-- Products will be injected here by JavaScript -->
+                        <div class="col-span-full flex justify-center items-center py-12 w-full">
+                            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                        </div>
                     </div>
+                    <!-- Right Arrow Button -->
+                    <button id="scroll-right-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-10 h-10 md:w-12 md:h-12 items-center justify-center text-primary border border-outline-variant/30 hover:bg-primary hover:text-white transition-all z-10 hidden md:flex opacity-0 group-hover:opacity-100 mr-2 -mt-12 cursor-pointer scale-95 hover:scale-100">
+                        <span class="material-symbols-outlined text-[20px] md:text-[24px]">arrow_forward_ios</span>
+                    </button>
                 </div>
             </section>
 
@@ -351,11 +357,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
             
+            window.allProducts = [];
             Papa.parse(SHEET_URL, {
                 download: true,
                 header: true,
                 complete: function(results) {
                     const products = results.data;
+                    window.allProducts = products;
                     const container = document.getElementById('products-container');
                     container.innerHTML = ''; // Clear loader
                     
@@ -374,7 +382,7 @@
                         
                         // Build HTML
                         const cardHTML = `
-                        <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
+                        <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
                             <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
                                 <img alt="${product.Name}" class="w-[85%] h-[85%] object-cover mix-blend-multiply" src="${product['Image URL']}">
                                 ${badgeHTML}
@@ -392,12 +400,81 @@
                         
                         container.insertAdjacentHTML('beforeend', cardHTML);
                     });
+
+                    // Smooth scroll on hash (after items render)
+                    if (window.location.hash === '#categories') {
+                        setTimeout(() => {
+                            const target = document.getElementById('categories');
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        }, 50);
+                    }
                 },
                 error: function(error) {
                     console.error("Error fetching products:", error);
                     document.getElementById('products-container').innerHTML = '<p class="col-span-full text-center text-red-500">Failed to load products. Please try again later.</p>';
                 }
             });
+
+            // Arrow button scroll logic
+            const scrollBtn = document.getElementById('scroll-right-btn');
+            const productsContainer = document.getElementById('products-container');
+            if (scrollBtn && productsContainer) {
+                scrollBtn.addEventListener('click', () => {
+                    productsContainer.scrollBy({ left: 340, behavior: 'smooth' });
+                });
+            }
+
+            // Search functionality
+            function executeSearch() {
+                const searchInput = document.getElementById('search-input');
+                if (!searchInput) return;
+                
+                const query = searchInput.value.toLowerCase().trim();
+                if (!query) return;
+
+                // Keyword mapping
+                if (query.includes('laptop') || query.includes('macbook')) {
+                    window.location.href = `laptops.html?search=${encodeURIComponent(query)}`;
+                } else if (query.includes('desktop') || query.includes('pc') || query.includes('computer')) {
+                    window.location.href = `desktops.html?search=${encodeURIComponent(query)}`;
+                } else if (query.includes('printer') || query.includes('epson') || query.includes('canon')) {
+                    window.location.href = `printers.html?search=${encodeURIComponent(query)}`;
+                } else if (query.includes('mouse') || query.includes('keyboard') || query.includes('accessory') || query.includes('accessories') || query.includes('component')) {
+                    window.location.href = `accessories.html?search=${encodeURIComponent(query)}`;
+                } else {
+                    let foundPage = `accessories.html?search=${encodeURIComponent(query)}`; // fallback
+                    if (window.allProducts && window.allProducts.length > 0) {
+                        const match = window.allProducts.find(item => 
+                            (item.Name && item.Name.toLowerCase().includes(query)) || 
+                            (item.Brand && item.Brand.toLowerCase().includes(query)) ||
+                            (item.Description && item.Description.toLowerCase().includes(query))
+                        );
+                        if (match) {
+                            const cat = (match.Category || '').toLowerCase();
+                            if (cat.includes('laptop')) foundPage = `laptops.html?search=${encodeURIComponent(query)}`;
+                            else if (cat.includes('desktop')) foundPage = `desktops.html?search=${encodeURIComponent(query)}`;
+                            else if (cat.includes('printer')) foundPage = `printers.html?search=${encodeURIComponent(query)}`;
+                        }
+                    }
+                    window.location.href = foundPage;
+                }
+            }
+
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        executeSearch();
+                    }
+                });
+            }
+            if (searchBtn) {
+                searchBtn.addEventListener('click', executeSearch);
+            }
         });
     </script>
 </body></html>
