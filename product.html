@@ -6,6 +6,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
@@ -226,23 +227,15 @@
             <!-- Browse Categories -->
             <section class="mb-10 md:mb-xl">
                 <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface mb-4 md:mb-md font-semibold text-left">Browse Categories</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-gutter">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
                     <!-- Category Card 1 -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
+                    <a href="laptops.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">laptop_mac</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Laptops</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">High Performance</p>
-                    </div>
-                    <!-- Category Card 2 -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
-                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
-                            <span class="material-symbols-outlined text-[24px] md:text-[28px]">desktop_windows</span>
-                        </div>
-                        <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Desktops</h3>
-                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Home & Office</p>
-                    </div>
+                    </a>
                     <!-- Category Card 3 -->
                     <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
@@ -260,7 +253,7 @@
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Build Your Own</p>
                     </div>
                     <!-- Category Card 5 (Accessories) -->
-                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all col-span-2 md:col-span-1 mx-auto w-[calc(50%-0.5rem)] md:w-auto">
+                    <div class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all">
                         <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">keyboard</span>
                         </div>
@@ -278,57 +271,10 @@
                 </div>
                 
                 <!-- Horizontal Scroll Container for Mobile, Grid for Desktop -->
-                <div class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-gutter pb-4 md:pb-0 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x">
-                    <!-- Product Card 1 -->
-                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
-                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
-                            <img alt="HP EliteBook 840 G8" class="w-[85%] h-[85%] object-cover mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXosrxHmmJyWVbFaa5JIAelDuohYiVcH6yoIZll7CPawV3pty3Oqn4zk7F6n8avKBfhTC8H5O2WISoRZYBRoITwo6ZqAjywm_G3VkqRFSJBZKvoDiHD5quyrZnAbVOjbTd5zl7XXtPOLvD8exSZXc-wt4rqMJOT7WWb44m6U1qqe2gOQ1Lc3ZPK8824o-qIj7BV-aq17QK84RvgjDCOPOwqBcIDoBOFJg61tnHBriza3HLYHjJIxy_">
-                            <span class="absolute top-2 right-2 bg-[#ff9800] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Bestseller</span>
-                        </div>
-                        <div class="px-2 flex flex-col flex-grow">
-                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">HP EliteBook 840 G8</h3>
-                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Intel Core i7 11th Gen, 16GB RAM, 512GB SSD, 14" FHD Display</p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="text-title-lg font-title-lg font-bold text-primary">₹85,000</span>
-                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
-                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Product Card 2 -->
-                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
-                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
-                            <img alt="Logitech MX Master 3S" class="w-[70%] h-[70%] object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJktbE_XZSp6Ax-2mJQScRIFxbWVccMfezQAWzgIFHc5kqgJ1p3Gj3JBpRe3nITs6eLstkm7ayKus9YXDwrBb_KG1OvJXJv0k343VCUY-jEgGyOMxjQ7e_bWwrRiWtbHRSBu8vhy6tQ8T0rsG36inNzSXFjSdsXdeVVYBhMitPkhWMrMa6VKf72GpO0bbXzOy9Bkny4l1mL4dswmXZ7EZffvE2FMfgGSNChhBx0cUK63hb_1pFRIBk">
-                        </div>
-                        <div class="px-2 flex flex-col flex-grow">
-                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">Logitech MX Master 3S</h3>
-                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Wireless Performance Mouse, Ultra-fast Scrolling, Ergonomic Design</p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="text-title-lg font-title-lg font-bold text-primary">₹9,995</span>
-                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
-                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Product Card 3 -->
-                    <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
-                        <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
-                            <img alt="HP LaserJet Pro" class="w-[70%] h-[70%] object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjLwmKDuuqSSw3FnyPeXbNjMr0Bp8bUZWHaL6YjQBOJVg1tikoiuzjf8b_Tiv1bskUHS29mBoa966GAVy-uD_85B9PtVeXAofe1VDMYlxmjDLg6OwH9ClAyT2Xbga184SbL8n-CSnWk_YakaI9yn2op8vdK7Xc34TahHLvQ18RuirCrwlgWJO01WxUw3vo9OMpSzW1c-MjuxTO5cixPCQuSXRcakFMGs1ewRh-sHmyYfdpjteqVleq">
-                        </div>
-                        <div class="px-2 flex flex-col flex-grow">
-                            <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">HP LaserJet Pro</h3>
-                            <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">Wireless Laser Printer, High Speed Print, Ideal for Small Business</p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="text-title-lg font-title-lg font-bold text-primary">₹25,500</span>
-                                <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
-                                    <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
-                                </button>
-                            </div>
-                        </div>
+                <div id="products-container" class="flex overflow-x-auto md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-gutter pb-4 md:pb-0 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x">
+                    <!-- Products will be injected here by JavaScript -->
+                    <div class="col-span-full flex justify-center items-center py-12 w-full">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                     </div>
                 </div>
             </section>
@@ -400,4 +346,60 @@
         <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span><span>Products</span></a>
         <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
     </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
+            
+            Papa.parse(SHEET_URL, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const products = results.data;
+                    const container = document.getElementById('products-container');
+                    container.innerHTML = ''; // Clear loader
+                    
+                    products.forEach(product => {
+                        if (!product.Name) return; // Skip empty rows
+                        
+                        // Format price
+                        let displayPrice = product.Price;
+                        if (!isNaN(parseFloat(displayPrice))) {
+                            displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
+                        }
+                        
+                        // Bestseller badge HTML
+                        const isBestseller = product.Indicates && product.Indicates.toLowerCase().includes('bestseller');
+                        const badgeHTML = isBestseller ? `<span class="absolute top-2 right-2 bg-[#ff9800] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Bestseller</span>` : '';
+                        
+                        // Build HTML
+                        const cardHTML = `
+                        <div class="min-w-[280px] md:min-w-0 bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
+                            <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
+                                <img alt="${product.Name}" class="w-[85%] h-[85%] object-cover mix-blend-multiply" src="${product['Image URL']}">
+                                ${badgeHTML}
+                            </div>
+                            <div class="px-2 flex flex-col flex-grow">
+                                <h3 class="text-body-lg font-body-lg text-on-surface font-semibold mb-1 line-clamp-1">${product.Name}</h3>
+                                <p class="text-[12px] font-body-md text-on-surface-variant mb-4 line-clamp-2">${product.Description || ''}</p>
+                                <div class="mt-auto flex items-center justify-between">
+                                    <span class="text-title-lg font-title-lg font-bold text-primary">${displayPrice}</span>
+                                    <button class="bg-primary text-on-primary h-10 w-10 rounded-full flex items-center justify-center hover:bg-primary/90 transition-colors shadow-sm">
+                                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        `;
+                        
+                        container.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching products:", error);
+                    document.getElementById('products-container').innerHTML = '<p class="col-span-full text-center text-red-500">Failed to load products. Please try again later.</p>';
+                }
+            });
+        });
+    </script>
 </body></html>
