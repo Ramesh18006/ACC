@@ -1,24 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Service - Aruna Computers Care</title>
-    
-    <!-- Google Fonts & Material Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-    
+    <!-- Tailwind & Supabase CSS/JS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#004d99',
+                        'on-primary': '#ffffff',
+                        'primary-container': '#d3e3fd',
+                        'on-primary-container': '#001c3b',
+                        secondary: '#ff9800',
+                        'surface-container-low': '#f8f9fa',
+                        'on-surface': '#1a1b1e',
+                        'on-surface-variant': '#44474e',
+                        'outline': '#74777f',
+                        'outline-variant': '#c4c6d0',
+                    },
+                    spacing: {
+                        'margin-mobile': '16px',
+                        'margin-desktop': '48px',
+                        'gutter': '24px'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Custom Chip CSS */
+        .service-chip input[type="radio"]:checked+span {
+            background-color: #004d99;
+            color: #ffffff;
+            border-color: #004d99;
+        }
+
+        /* Input Focus Effects */
+        .form-input:focus-within label {
+            color: #004d99;
+        }
+    </style>
 </head>
-<body>
+
+<body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans">
 
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
             <a href="home.html" class="brand" style="text-decoration: none;">
                 <span class="material-symbols-outlined icon-fill">memory</span>
-                <span class="brand-name">Aruna Computers Care</span>
+                <span class="brand-name">ACC</span>
             </a>
 
             <!-- Desktop Links Only -->
@@ -35,173 +93,612 @@
         </div>
     </header>
 
-    <!-- Main Form Container -->
-    <main class="main-container" id="formView">
-        <div class="page-intro">
-            <h2>We're here to help.</h2>
-            <p>Tell us what's wrong with your device.</p>
-        </div>
+    <main class="w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-6 md:py-12 flex-grow">
 
-        <form id="serviceForm" class="request-form">
-            <!-- 1. Device Category Selection -->
-            <div class="form-section">
-                <label class="section-label">Device Category</label>
-                <div class="chip-group">
-                    <label class="chip">
-                        <input type="radio" name="category" value="Laptop" checked>
-                        <span>Laptop</span>
-                    </label>
-                    <label class="chip">
-                        <input type="radio" name="category" value="Desktop">
-                        <span>Desktop</span>
-                    </label>
-                    <label class="chip">
-                        <input type="radio" name="category" value="Printer">
-                        <span>Printer</span>
-                    </label>
-                    <label class="chip">
-                        <input type="radio" name="category" value="CCTV">
-                        <span>CCTV</span>
-                    </label>
-                    <label class="chip">
-                        <input type="radio" name="category" value="Networking">
-                        <span>Networking</span>
-                    </label>
-                    <label class="chip">
-                        <input type="radio" name="category" value="Other">
-                        <span>Other</span>
-                    </label>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+
+            <!-- Left Column: Form -->
+            <div class="w-full max-w-2xl mx-auto lg:mx-0">
+                <div class="mb-8 text-center lg:text-left">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-on-surface mb-2">We're here to help.</h1>
+                    <p class="text-on-surface-variant text-base md:text-lg">Tell us what's wrong with your device, and
+                        we'll send an expert right to your door.</p>
                 </div>
-            </div>
 
-            <!-- 2. Issue Description -->
-            <div class="form-section">
-                <label class="section-label">Describe the issue</label>
-                <div class="textarea-wrapper">
-                    <textarea id="issueText" rows="4" placeholder="E.g., Screen is flickering, laptop won't turn on..." required></textarea>
-                    <button type="button" class="mic-fab" id="micBtn" title="Voice Input">
-                        <span class="material-symbols-outlined">mic</span>
+                <form id="serviceForm"
+                    class="flex flex-col gap-8 bg-white p-6 md:p-8 rounded-[24px] shadow-sm border border-outline-variant/30 relative">
+
+                    <!-- 1. Category -->
+                    <div>
+                        <label class="block text-sm font-bold text-on-surface mb-3">What kind of device?</label>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="service-chip cursor-pointer">
+                                <input type="radio" name="category" value="Laptop" class="hidden">
+                                <span
+                                    class="px-5 py-2.5 rounded-full border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors block">Laptop</span>
+                            </label>
+                            <label class="service-chip cursor-pointer">
+                                <input type="radio" name="category" value="Desktop" class="hidden">
+                                <span
+                                    class="px-5 py-2.5 rounded-full border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors block">Desktop</span>
+                            </label>
+                            <label class="service-chip cursor-pointer">
+                                <input type="radio" name="category" value="Printer" class="hidden">
+                                <span
+                                    class="px-5 py-2.5 rounded-full border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors block">Printer</span>
+                            </label>
+                            <label class="service-chip cursor-pointer">
+                                <input type="radio" name="category" value="CCTV" class="hidden">
+                                <span
+                                    class="px-5 py-2.5 rounded-full border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors block">CCTV</span>
+                            </label>
+                            <label class="service-chip cursor-pointer">
+                                <input type="radio" name="category" value="Networking" class="hidden">
+                                <span
+                                    class="px-5 py-2.5 rounded-full border border-outline-variant/50 text-sm font-medium text-on-surface-variant hover:bg-surface-container-low transition-colors block">Networking</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Description -->
+                    <div>
+                        <label class="block text-sm font-bold text-on-surface mb-3">Describe the issue</label>
+                        <div class="relative">
+                            <textarea id="issueText" rows="4"
+                                class="w-full bg-[#f8f9fa] border border-outline-variant/30 rounded-2xl p-4 pr-12 text-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
+                                placeholder="E.g., Screen is flickering, laptop won't turn on..." required></textarea>
+                            <button type="button"
+                                class="mic-btn absolute bottom-4 right-4 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm text-primary border border-outline-variant/30 hover:bg-primary/5 transition-colors"
+                                title="Voice Input">
+                                <span class="material-symbols-outlined text-[18px] pointer-events-none">mic</span>
+                            </button>
+                        </div>
+                        <div id="audioPreviewContainer"
+                            class="hidden mt-3 w-full bg-[#e9ecef] rounded-xl px-4 py-2 items-center gap-3">
+                            <audio id="audioPlayback" controls class="w-full h-10"></audio>
+                            <button type="button" id="discardAudioBtn"
+                                class="w-10 h-10 rounded-full flex items-center justify-center text-red-500 hover:bg-red-50 transition-colors shrink-0"
+                                title="Remove Audio">
+                                <span class="material-symbols-outlined shrink-0 text-[20px]">delete</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Attachments -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <label for="imageInput"
+                            class="cursor-pointer bg-[#f8f9fa] border border-outline-variant/30 rounded-2xl p-4 flex items-center gap-3 hover:bg-primary/5 hover:border-primary/30 transition-all relative overflow-hidden">
+                            <div id="imagePreviewBox"
+                                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 relative overflow-hidden">
+                                <span class="material-symbols-outlined">photo_camera</span>
+                            </div>
+                            <div class="flex flex-col relative z-10 bg-[#f8f9fa] pr-2 rounded pointer-events-none">
+                                <span class="font-bold text-sm text-on-surface whitespace-nowrap">Add Photo</span>
+                                <span id="imageLabel" class="text-[11px] text-on-surface-variant hidden md:block">Upload
+                                    from gallery</span>
+                            </div>
+                            <input type="file" id="imageInput" accept="image/*" class="sr-only">
+                        </label>
+                        <button type="button" id="locationBtn"
+                            class="bg-[#f8f9fa] border border-outline-variant/30 rounded-2xl p-4 flex items-center gap-3 hover:bg-primary/5 hover:border-primary/30 transition-all text-left">
+                            <div
+                                class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-bold text-sm text-on-surface whitespace-nowrap">Share Location</span>
+                                <span id="locationLabel"
+                                    class="text-[11px] text-on-surface-variant hidden md:block">Faster service</span>
+                            </div>
+                        </button>
+                    </div>
+
+                    <!-- 4. Contact -->
+                    <div>
+                        <label class="block text-sm font-bold text-on-surface mb-3">Contact Details</label>
+                        <div class="flex flex-col gap-4">
+                            <div
+                                class="form-input relative bg-[#f8f9fa] border border-outline-variant/30 rounded-xl px-4 py-2 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                                <label
+                                    class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider block mb-0.5 transition-colors">Full
+                                    Name</label>
+                                <input type="text" id="customerName"
+                                    class="w-full bg-transparent text-sm outline-none text-on-surface font-medium"
+                                    required>
+                            </div>
+                            <div
+                                class="form-input relative bg-[#f8f9fa] border border-outline-variant/30 rounded-xl px-4 py-2 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                                <label
+                                    class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider block mb-0.5 transition-colors">Mobile
+                                    Number</label>
+                                <input type="tel" id="customerPhone" pattern="[0-9]{10}"
+                                    class="w-full bg-transparent text-sm outline-none text-on-surface font-medium"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn"
+                        class="w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] shadow-md mt-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span id="submitBtnText">Submit Request</span> <span
+                            class="material-symbols-outlined submit-icon">arrow_forward</span>
                     </button>
+
+                    <!-- Success Overlay -->
+                    <div id="successView"
+                        class="absolute inset-0 bg-[#f8f9fa] z-20 rounded-[24px] flex flex-col items-center justify-start p-4 md:p-6 text-center opacity-0 pointer-events-none transition-opacity duration-300 overflow-hidden">
+
+                        <div class="text-[#1565c0] text-[13px] font-medium mb-4 md:mb-6 mt-2">Aruna Computers Care</div>
+
+                        <div
+                            class="bg-white rounded-3xl w-full flex-grow relative overflow-hidden border border-outline-variant/30 flex flex-col items-center justify-center p-6 mb-6 shadow-sm">
+                            <!-- Light green gradient at bottom left -->
+                            <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-green-400/20 rounded-full blur-3xl">
+                            </div>
+
+                            <!-- Checkmark Icon -->
+                            <div
+                                class="w-20 h-20 rounded-full bg-[#1565c0] text-white flex items-center justify-center mb-6 shadow-md relative z-10 ring-8 ring-[#d3e3fd]">
+                                <span class="material-symbols-outlined text-[40px] font-bold">check</span>
+                            </div>
+
+                            <h3
+                                class="text-[22px] md:text-2xl font-bold text-on-surface mb-3 relative z-10 leading-tight">
+                                Request Submitted<br>Successfully</h3>
+                            <p
+                                class="text-on-surface-variant text-[13px] mb-8 leading-relaxed max-w-[260px] relative z-10">
+                                Thank you for contacting Aruna Computers Care. We've received your request. Our team
+                                will contact you shortly.</p>
+
+                            <!-- Tracking ID Box -->
+                            <div
+                                class="bg-[#e9ecef] rounded-xl p-4 w-full relative z-10 border border-outline-variant/30">
+                                <span
+                                    class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider block mb-2">Your
+                                    Tracking ID</span>
+                                <div class="flex items-center justify-center gap-2 text-on-surface font-bold text-lg">
+                                    <span
+                                        class="material-symbols-outlined text-[18px] text-[#1565c0]">confirmation_number</span>
+                                    <span id="trackingIdDisplay">ACC-...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="w-full flex flex-col gap-3 mt-auto">
+                            <button type="button" onclick="window.location.href='service.html'"
+                                class="w-full bg-[#004d99] hover:bg-[#003e99] text-white py-3.5 rounded-xl font-bold text-[13px] flex items-center justify-center gap-2 transition-colors shadow-sm">
+                                View My Services <span
+                                    class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </button>
+                            <button type="button" onclick="window.location.href='home.html'"
+                                class="w-full bg-white border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container-low py-3.5 rounded-xl font-medium text-[13px] flex items-center justify-center gap-2 transition-colors">
+                                <span class="material-symbols-outlined text-[18px]">home</span> Back to Home
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Right Column: Visual/Trust Indicators -->
+            <div class="hidden lg:flex flex-col gap-6 justify-center max-w-lg ml-auto w-full">
+                <div
+                    class="bg-primary/5 rounded-[32px] p-10 border border-primary/10 relative overflow-hidden group flex-grow flex flex-col justify-center">
+                    <div
+                        class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3 group-hover:scale-110 transition-transform duration-700">
+                    </div>
+
+                    <h2 class="text-3xl font-bold text-primary mb-12 relative z-10">Why choose us?</h2>
+
+                    <div class="flex flex-col gap-8 relative z-10">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined">speed</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface mb-1">Fast Doorstep Service</h4>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">Our verified technicians
+                                    reach your location quickly to diagnose and fix issues on the spot.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#ff9800] shrink-0">
+                                <span class="material-symbols-outlined">verified</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface mb-1">Genuine Parts Guarantee</h4>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">We only use 100% authentic
+                                    replacement parts with standard warranties for complete peace of mind.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-[#4caf50] shrink-0">
+                                <span class="material-symbols-outlined">support_agent</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-on-surface mb-1">Expert Remote Support</h4>
+                                <p class="text-on-surface-variant text-sm leading-relaxed">Minor software issues? Our
+                                    networking team can securely fix them remotely without any delay.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-[#1565c0] text-white rounded-[24px] p-8 flex items-center justify-between shadow-lg">
+                    <div>
+                        <h4 class="font-bold text-lg mb-1">Urgent Issue?</h4>
+                        <p class="text-white/80 text-sm">Call us directly for immediate support.</p>
+                    </div>
+                    <a href="tel:+919360610806"
+                        class="bg-white text-[#1565c0] w-14 h-14 rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-md">
+                        <span class="material-symbols-outlined text-[28px]">call</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- 3. Attachments & Location -->
-            <div class="action-cards-group">
-                <div class="media-card" id="uploadPhotoBtn">
-                    <div class="media-icon bg-blue">
-                        <span class="material-symbols-outlined">photo_camera</span>
-                    </div>
-                    <div class="media-text">
-                        <span class="card-title">Add Photo</span>
-                        <span class="card-subtitle" id="photoStatus">Upload from gallery</span>
-                    </div>
-                    <input type="file" id="photoInput" accept="image/*" style="display:none;">
-                </div>
-
-                <div class="media-card" id="shareLocationBtn">
-                    <div class="media-icon bg-blue">
-                        <span class="material-symbols-outlined">location_on</span>
-                    </div>
-                    <div class="media-text">
-                        <span class="card-title">Share Location</span>
-                        <span class="card-subtitle" id="locationStatus">Faster service</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 4. Contact Details -->
-            <div class="form-section">
-                <label class="section-label">Contact Details</label>
-
-                <div class="floating-input-group">
-                    <input type="text" id="fullName" placeholder=" " required>
-                    <label for="fullName">Full Name</label>
-                </div>
-
-                <div class="floating-input-group">
-                    <input type="tel" id="mobileNumber" placeholder=" " required pattern="[0-9]{10}">
-                    <label for="mobileNumber">Mobile Number</label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-submit">
-                Submit Request <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-        </form>
+        </div>
     </main>
 
-    <!-- SUCCESS STATE MODAL/VIEW (Hidden by default) -->
-    <div class="success-overlay" id="successView" style="display: none;">
-        <div class="success-container">
-            <span class="brand-subtext">Aruna Computers Care</span>
-            
-            <div class="card success-card">
-                <div class="success-icon-box">
-                    <span class="material-symbols-outlined">check_circle</span>
-                </div>
-
-                <h3>Request Submitted Successfully</h3>
-                <p>Thank you for contacting Aruna Computers Care. We've received your request. Our team will contact you shortly.</p>
-
-                <div class="tracking-id-box">
-                    <span class="tracking-label">YOUR TRACKING ID</span>
-                    <div class="tracking-code">
-                        <span class="material-symbols-outlined">confirmation_number</span>
-                        <strong id="displayTrackingId">ACC-2026-001</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="success-actions">
-                <a href="service.html" class="btn btn-primary full-width">
-                    View My Services <span class="material-symbols-outlined">arrow_forward</span>
+    <!-- Footer -->
+    <footer class="hidden md:block w-full bg-[#f3f4f5] border-t border-outline-variant/30 pt-12 pb-8 px-4 mt-auto">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+            <div class="md:col-span-2">
+                <a href="home.html" class="flex items-center gap-2 text-primary font-bold text-xl mb-4"
+                    style="text-decoration: none;">
+                    <span class="material-symbols-outlined">memory</span> Aruna Computers Care
                 </a>
-                <a href="home.html" class="btn btn-outline full-width">
-                    <span class="material-symbols-outlined">home</span> Back to Home
-                </a>
+                <p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">Your trusted partner for all
+                    computer and IT needs. We provide expert repair services, premium products, and reliable support
+                    right at your doorstep.</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Desktop Footer -->
-    <footer class="site-footer desktop-only">
-        <div class="footer-container">
-            <div class="footer-col main-col">
-                <h4 class="footer-title">ARUNA COMPUTERS CARE</h4>
-                <p>Complete computer, laptop, printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
-            </div>
-            <div class="footer-col">
-                <h5>Services</h5>
-                <ul>
-                    <li><a href="service.html">Laptop & PC Repair</a></li>
-                    <li><a href="service.html">Printer Service & Ink</a></li>
-                    <li><a href="service.html">CCTV Installation</a></li>
-                    <li><a href="service.html">Networking Solutions</a></li>
+            <div>
+                <h4 class="font-bold text-on-surface mb-4">Quick Links</h4>
+                <ul class="flex flex-col gap-3 text-sm text-on-surface-variant">
+                    <li><a href="home.html" class="hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="service.html" class="hover:text-primary transition-colors">Services</a></li>
+                    <li><a href="product.html" class="hover:text-primary transition-colors">Products</a></li>
                 </ul>
             </div>
-            <div class="footer-col">
-                <h5>Information</h5>
-                <ul>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shop Location</a></li>
+            <div>
+                <h4 class="font-bold text-on-surface mb-4">Contact Us</h4>
+                <ul class="flex flex-col gap-4 text-sm text-on-surface-variant">
+                    <li class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+                        <span>63, PSR Rd, near thangamani theatre,<br>opp. Lotus Opticals, Parasakthi
+                            Colony,<br>Sivakasi, Tamil Nadu 626123</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-[20px]">call</span>
+                        <span>+91 9360610806</span>
+                    </li>
                 </ul>
             </div>
         </div>
-        <div class="footer-bottom">
+        <div
+            class="max-w-[1440px] mx-auto border-t border-outline-variant/30 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-on-surface-variant">
             <p>© 2026 Aruna Computers Care. All rights reserved.</p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-primary transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-primary transition-colors">Terms of Service</a>
+            </div>
         </div>
     </footer>
 
     <!-- Mobile Bottom Navigation Bar -->
-    <nav class="bottom-nav mobile-only">
-        <a href="home.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
-        <a href="service.html" class="active"><span class="material-symbols-outlined">build</span><span>Services</span></a>
-        <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span><span>Products</span></a>
-        <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
+    <nav
+        class="fixed bottom-0 w-full bg-white border-t border-outline-variant/30 flex justify-around items-center py-2 z-50 md:hidden pb-safe">
+        <a href="home.html"
+            class="flex flex-col items-center text-on-surface-variant hover:text-primary transition-colors"><span
+                class="material-symbols-outlined">home</span><span class="text-[10px] font-medium mt-1">Home</span></a>
+        <a href="service.html" class="flex flex-col items-center text-primary"><span
+                class="material-symbols-outlined">build</span><span
+                class="text-[10px] font-medium mt-1">Services</span></a>
+        <a href="product.html"
+            class="flex flex-col items-center text-on-surface-variant hover:text-primary transition-colors"><span
+                class="material-symbols-outlined">shopping_bag</span><span
+                class="text-[10px] font-medium mt-1">Products</span></a>
+        <a href="#"><span
+                class="flex flex-col items-center text-on-surface-variant hover:text-primary transition-colors"><span
+                    class="material-symbols-outlined">person</span><span
+                    class="text-[10px] font-medium mt-1">Profile</span></span></a>
     </nav>
 
-    <script src="script.js"></script>
+    <!-- Recording Popup Modal -->
+    <div id="recordingModal"
+        class="fixed inset-0 bg-black/50 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity">
+        <div
+            class="bg-white rounded-3xl p-8 flex flex-col items-center shadow-2xl transform transition-transform scale-95 w-[90%] max-w-sm">
+            <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6 relative">
+                <div class="absolute inset-0 bg-red-500 rounded-full animate-ping opacity-20"></div>
+                <span class="material-symbols-outlined text-red-500 text-[40px]">mic</span>
+            </div>
+            <h3 class="text-xl font-bold text-on-surface mb-2">Listening...</h3>
+            <p class="text-on-surface-variant text-sm mb-8">Speak now</p>
+            <button id="stopRecordingBtn"
+                class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-colors">
+                <span class="material-symbols-outlined">stop_circle</span> Stop Recording
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let supabase = null;
+            try {
+                const supabaseUrl = 'https://gcfhmuxqpsdmeeruendi.supabase.co';
+                const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjZmhtdXhxcHNkbWVlcnVlbmRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3MDg4MDgsImV4cCI6MjEwMjI4NDgwOH0.0r7ABrfsVMNmX-vZn67OUR3HFzsDUZ5LxsF7kMVmqqw';
+                if (window.supabase) {
+                    supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+                } else {
+                    console.error("Supabase CDN not loaded!");
+                }
+            } catch (err) {
+                console.error("Supabase init error:", err);
+            }
+
+            // URL Parameter category selection
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                const radio = document.querySelector(`input[name="category"][value="${category}"]`);
+                if (radio) {
+                    radio.checked = true;
+                }
+            } else {
+                // Default to laptop if none selected
+                const defaultRadio = document.querySelector('input[name="category"][value="Laptop"]');
+                if (defaultRadio) defaultRadio.checked = true;
+            }
+
+            // Stateful Variables
+            let audioBlob = null;
+            let locationCoords = { lat: null, lng: null };
+
+            // Image Selection UI Update
+            const imageInput = document.getElementById('imageInput');
+            const imageLabel = document.getElementById('imageLabel');
+            const imagePreviewBox = document.getElementById('imagePreviewBox');
+
+            if (imageInput) {
+                imageInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        const file = e.target.files[0];
+                        imageLabel.textContent = "Image Attached!";
+                        imageLabel.classList.add('text-green-600');
+
+                        const reader = new FileReader();
+                        reader.onload = function (evt) {
+                            if (imagePreviewBox) {
+                                imagePreviewBox.innerHTML = `<img src="${evt.target.result}" class="w-full h-full object-cover">`;
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            // Location Sharing Logic
+            const locationBtn = document.getElementById('locationBtn');
+            const locationLabel = document.getElementById('locationLabel');
+            if (locationBtn) {
+                locationBtn.addEventListener('click', () => {
+                    locationLabel.textContent = "Getting location...";
+                    if ("geolocation" in navigator) {
+                        navigator.geolocation.getCurrentPosition(
+                            (position) => {
+                                locationCoords.lat = position.coords.latitude;
+                                locationCoords.lng = position.coords.longitude;
+                                locationLabel.textContent = "Location Secured!";
+                                locationLabel.classList.add('text-green-600');
+                            },
+                            (error) => {
+                                console.warn("Location error, faking for local test", error);
+                                locationLabel.textContent = "Location Secured (Test)!";
+                                locationLabel.classList.add('text-green-600');
+                                locationCoords.lat = 0;
+                                locationCoords.lng = 0;
+                            },
+                            { timeout: 5000 }
+                        );
+                    } else {
+                        locationLabel.textContent = "Not supported";
+                    }
+                });
+            }
+
+            // Mic Recording Logic
+            const recordingModal = document.getElementById('recordingModal');
+            const stopRecordingBtn = document.getElementById('stopRecordingBtn');
+            const issueText = document.getElementById('issueText');
+            let mediaRecorder = null;
+            let audioChunks = [];
+
+            document.querySelectorAll('.mic-btn').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    try {
+                        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                        mediaRecorder = new MediaRecorder(stream);
+                        mediaRecorder.start();
+                        audioChunks = [];
+
+                        mediaRecorder.addEventListener("dataavailable", event => {
+                            audioChunks.push(event.data);
+                        });
+
+                        recordingModal.classList.remove('hidden');
+                    } catch (err) {
+                        alert("Microphone permission denied or not available.");
+                    }
+                });
+            });
+
+            if (stopRecordingBtn) {
+                stopRecordingBtn.addEventListener('click', () => {
+                    if (mediaRecorder && mediaRecorder.state === "recording") {
+                        mediaRecorder.addEventListener("stop", () => {
+                            audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+
+                            // Audio Preview
+                            const audioUrl = URL.createObjectURL(audioBlob);
+                            const audioPlayback = document.getElementById('audioPlayback');
+                            const audioContainer = document.getElementById('audioPreviewContainer');
+                            if (audioPlayback && audioContainer) {
+                                audioPlayback.src = audioUrl;
+                                audioContainer.classList.remove('hidden');
+                                audioContainer.classList.add('flex');
+                            }
+
+                            document.querySelector('.mic-btn').classList.add('bg-green-100', 'border-green-500');
+                            if (issueText && !issueText.value) {
+                                issueText.value = "[Voice Recording Attached]";
+                            }
+                        });
+                        mediaRecorder.stop();
+                        mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                    }
+                    recordingModal.classList.add('hidden');
+                });
+            }
+
+            // Discard Audio
+            const discardAudioBtn = document.getElementById('discardAudioBtn');
+            if (discardAudioBtn) {
+                discardAudioBtn.addEventListener('click', () => {
+                    audioBlob = null;
+                    const audioPlayback = document.getElementById('audioPlayback');
+                    if (audioPlayback) audioPlayback.src = "";
+                    const container = document.getElementById('audioPreviewContainer');
+                    if (container) {
+                        container.classList.remove('flex');
+                        container.classList.add('hidden');
+                    }
+                    document.querySelector('.mic-btn').classList.remove('bg-green-100', 'border-green-500');
+                    if (issueText && issueText.value === "[Voice Recording Attached]") {
+                        issueText.value = "";
+                    }
+                });
+            }
+
+            // Helper function to upload to Supabase Storage
+            async function uploadToStorage(file, path) {
+                if (!supabase) throw new Error("Supabase is not initialized");
+
+                const { data, error } = await supabase.storage
+                    .from('service_media')
+                    .upload(path, file, { cacheControl: '3600', upsert: false });
+
+                if (error) throw error;
+
+                const { data: publicUrlData } = supabase.storage
+                    .from('service_media')
+                    .getPublicUrl(path);
+
+                return publicUrlData.publicUrl;
+            }
+
+            // Form Submit Logic
+            const form = document.getElementById('serviceForm');
+            const successOverlay = document.getElementById('successView');
+            const submitBtn = document.getElementById('submitBtn');
+            const submitBtnText = document.getElementById('submitBtnText');
+            const trackingIdDisplay = document.getElementById('trackingIdDisplay');
+
+            if (form) {
+                form.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    // Disable button
+                    submitBtn.disabled = true;
+                    submitBtnText.textContent = "Processing...";
+
+                    // Gather Form Data
+                    const selectedCategory = document.querySelector('input[name="category"]:checked')?.value || 'Laptop';
+                    const issueDescription = document.getElementById('issueText').value;
+                    const contactName = document.getElementById('customerName').value;
+                    const contactPhone = document.getElementById('customerPhone').value;
+
+                    // Generate Tracking ID (Sequential DB check)
+                    submitBtnText.textContent = "Generating ID...";
+                    const d = new Date();
+                    const dateStr = String(d.getDate()).padStart(2, '0') + String(d.getMonth() + 1).padStart(2, '0');
+                    const prefix = `ACC-${d.getFullYear()}-${dateStr}-`;
+                    let sequenceNum = '01';
+
+                    if (supabase) {
+                        try {
+                            const { count, error } = await supabase
+                                .from('service_requests')
+                                .select('*', { count: 'exact', head: true })
+                                .like('tracking_id', `${prefix}%`);
+
+                            if (count !== null) {
+                                sequenceNum = String(count + 1).padStart(2, '0');
+                            }
+                        } catch (e) {
+                            console.warn("Could not fetch daily count", e);
+                        }
+                    }
+                    const trackingId = prefix + sequenceNum;
+                    trackingIdDisplay.textContent = trackingId;
+
+                    let uploadedImageUrl = null;
+                    let uploadedVoiceUrl = null;
+
+                    try {
+                        // 1. Upload Image (if selected)
+                        const imageFile = imageInput.files[0];
+                        if (imageFile) {
+                            submitBtnText.textContent = "Uploading image...";
+                            const ext = imageFile.name.split('.').pop();
+                            const path = `images/${Date.now()}_${Math.random().toString(36).substring(7)}.${ext}`;
+                            uploadedImageUrl = await uploadToStorage(imageFile, path);
+                        }
+
+                        // 2. Upload Voice (if recorded)
+                        if (audioBlob) {
+                            submitBtnText.textContent = "Uploading voice note...";
+                            const path = `voice/${Date.now()}_${Math.random().toString(36).substring(7)}.webm`;
+                            uploadedVoiceUrl = await uploadToStorage(audioBlob, path);
+                        }
+
+                        submitBtnText.textContent = "Saving request...";
+
+                        // 3. Insert to Database
+                        if (supabase) {
+                            const { data, error } = await supabase
+                                .from('service_requests')
+                                .insert([{ category: selectedCategory, issue_text: issueDescription, contact_name: contactName, contact_phone: contactPhone, image_url: uploadedImageUrl, voice_url: uploadedVoiceUrl, location_lat: locationCoords.lat, location_lng: locationCoords.lng, tracking_id: trackingId }])
+                                .select();
+
+                            if (error) {
+                                alert("Database Error: " + error.message + " (Check if RLS is disabled on the table!)");
+                                throw error;
+                            }
+                            if (data && data.length > 0) trackingIdDisplay.textContent = data[0].tracking_id || trackingId;
+                        } else {
+                            alert("Supabase not connected. Please refresh.");
+                            throw new Error("Supabase not connected");
+                        }
+
+                        // Show success overlay
+                        successOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                        successOverlay.classList.add('opacity-100');
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        alert("Submission Failed: " + (error.message || error.error_description || "Unknown Error"));
+                        submitBtn.disabled = false;
+                        submitBtnText.textContent = "Submit Request";
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
