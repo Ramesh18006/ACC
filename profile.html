@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Profile - Aruna Computers Care</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed-variant": "#00468c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "primary-container": "#1565c0",
+                        "on-primary-container": "#dae5ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "secondary-fixed-dim": "#ffb870",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary-container": "#ff9800",
+                        "on-tertiary-fixed": "#001945",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#dde5ff",
+                        "primary": "#004d99",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#134aa4",
+                        "surface-tint": "#005db7",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#653900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcbe",
+                        "secondary": "#8b5000",
+                        "on-secondary-fixed": "#2c1600",
+                        "tertiary-container": "#3563be",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c2c6d4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727783",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "fontFamily": {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand" style="text-decoration: none;">
+                <span class="material-symbols-outlined icon-fill">memory</span>
+                <span class="brand-name">ACC</span>
+            </a>
+
+            <nav class="nav-links desktop-only">
+                <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
+                <a href="profile.html" class="active"><span class="material-symbols-outlined">person</span> Profile</a>
+            </nav>
+
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Login View (Hidden if logged in) -->
+    <main id="loginView"
+        class="hidden w-full max-w-md mx-auto px-4 py-16 flex-col gap-6 flex-grow items-center justify-center">
+        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-2">
+            <span class="material-symbols-outlined text-[32px]">account_circle</span>
+        </div>
+        <h2 class="text-2xl font-bold text-center text-on-surface block">Create Account</h2>
+        <p class="text-[13px] text-center text-on-surface-variant block">Please provide your details to manage your
+            profile, track tasks, and get notifications.</p>
+
+        <form id="loginForm"
+            class="w-full bg-white rounded-[24px] p-6 shadow-sm border border-outline-variant/30 flex flex-col gap-5 mt-4">
+            <div>
+                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Full
+                    Name</label>
+                <input type="text" id="loginName" required placeholder="e.g. Rajesh Kumar"
+                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            </div>
+            <div>
+                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Mobile
+                    Number</label>
+                <input type="tel" id="loginPhone" required pattern="[0-9]{10}" placeholder="10-digit number"
+                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            </div>
+            <div>
+                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Email
+                    Address</label>
+                <input type="email" id="loginEmail" required placeholder="Your valid email address"
+                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+            </div>
+            <button type="submit"
+                class="mt-4 w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-2">
+                Continue Setup <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+        </form>
+    </main>
+
+    <!-- Profile View (Hidden if NOT logged in) -->
+    <main id="profileView" class="hidden w-full max-w-[800px] mx-auto px-4 py-8 md:py-12 flex-col gap-10 flex-grow">
+
+        <!-- Header Section -->
+        <div class="flex flex-col items-center mt-2">
+            <!-- Profile Avatar with badge -->
+            <div class="relative mb-4">
+                <div class="w-[96px] h-[96px] md:w-[110px] md:h-[110px] bg-[#d3e3fd] text-[#004d99] rounded-full border-[3px] border-white shadow-md overflow-hidden flex items-center justify-center font-bold text-4xl"
+                    id="profileAvatar">
+                    RK
+                </div>
+                <!-- Edit badge -->
+                <a href="edit-profile.html"
+                    class="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-[#004d99] text-white border-2 border-white shadow-sm flex items-center justify-center hover:bg-[#003366] transition-colors cursor-pointer">
+                    <span class="material-symbols-outlined text-[14px]">edit</span>
+                </a>
+            </div>
+            <span
+                class="mb-1.5 flex items-center gap-1 bg-[#d3e3fd] text-[#004d99] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                <span class="material-symbols-outlined text-[14px]">waving_hand</span> WELCOME BACK!
+            </span>
+            <h1 id="displayProfileName" class="text-2xl md:text-[32px] font-extrabold text-[#1a1b1e] tracking-tight">
+                Rajesh Kumar</h1>
+            <p id="displayProfilePhone" class="text-sm font-medium text-[#44474e] mt-1">+91 98765 43210</p>
+        </div>
+
+        <!-- Sections -->
+        <div class="flex flex-col gap-10 w-full mt-4">
+
+            <!-- Account Section -->
+            <section>
+                <h2 class="text-[17px] md:text-[20px] font-bold text-[#1a1b1e] mb-4">Account</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Personal Info -->
+                    <a href="edit-profile.html"
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center justify-between hover:shadow-md transition-shadow cursor-pointer">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#e9ecef] flex items-center justify-center text-[#004d99]">
+                                <span class="material-symbols-outlined font-medium">person</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-[#1a1b1e]">Personal Information</h3>
+                                <p class="text-xs text-[#44474e] mt-0.5 font-medium">Update your details</p>
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined text-[#74777f]">chevron_right</span>
+                    </a>
+
+                    <!-- Language Option -->
+                    <div
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center justify-between transition-shadow hover:shadow-md">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-[#ffe0b2] flex items-center justify-center text-[#ff9800]">
+                                <span class="material-symbols-outlined font-medium">translate</span>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-bold text-[#1a1b1e]">Language</h3>
+                                <p class="text-xs text-[#44474e] mt-0.5 font-medium">Select your preference</p>
+                            </div>
+                        </div>
+                        <div class="flex bg-[#f3f4f5] rounded-full p-1 shrink-0">
+                            <button
+                                class="px-3 py-1 bg-white rounded-full shadow-[0_1px_4px_rgba(0,0,0,0.1)] text-[11px] font-bold text-[#004d99]">ENG</button>
+                            <button
+                                class="px-3 py-1 text-[11px] font-bold text-[#44474e] hover:text-[#004d99] transition-colors rounded-full">TAM</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Support & Assistance -->
+            <section>
+                <h2 class="text-[17px] md:text-[20px] font-bold text-[#1a1b1e] mb-4">Support & Assistance</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Contact Us -->
+                    <a href="tel:+919876543210"
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+                        <div
+                            class="w-12 h-12 rounded-full bg-[#e3f2fd] text-[#1976d2] flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">call</span>
+                        </div>
+                        <h3 class="text-[15px] font-semibold text-[#1a1b1e]">Contact Us</h3>
+                    </a>
+
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/919876543210" target="_blank"
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+                        <div
+                            class="w-12 h-12 rounded-full bg-[#e8f5e9] text-[#2e7d32] flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">forum</span>
+                        </div>
+                        <h3 class="text-[15px] font-semibold text-[#1a1b1e]">WhatsApp Support</h3>
+                    </a>
+
+                    <!-- Visit Shop -->
+                    <a href="https://maps.google.com" target="_blank"
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+                        <div
+                            class="w-12 h-12 rounded-full bg-[#fff3e0] text-[#ef6c00] flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">storefront</span>
+                        </div>
+                        <h3 class="text-[15px] font-semibold text-[#1a1b1e]">Visit Our Shop</h3>
+                    </a>
+
+                    <!-- Help & FAQ -->
+                    <a href="#"
+                        class="bg-white rounded-[16px] md:rounded-[20px] p-5 shadow-sm border border-[#e1e3e4] flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+                        <div
+                            class="w-12 h-12 rounded-full bg-[#f3f4f5] text-[#44474e] border border-[#c4c6d0] flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined"
+                                style="font-variation-settings: 'FILL' 1;">help</span>
+                        </div>
+                        <h3 class="text-[15px] font-semibold text-[#1a1b1e]">Help & FAQ</h3>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Settings -->
+            <section>
+                <h2 class="text-[17px] md:text-[20px] font-bold text-[#1a1b1e] mb-4">Settings</h2>
+                <div
+                    class="bg-white rounded-[16px] md:rounded-[20px] shadow-sm border border-[#e1e3e4] overflow-hidden flex flex-col">
+                    <a href="notifications.html"
+                        class="flex items-center justify-between py-4.5 px-5 md:px-6 border-b border-[#e1e3e4] hover:bg-[#f8f9fa] transition-colors cursor-pointer"
+                        style="text-decoration: none;">
+                        <div class="flex items-center gap-4 text-[#1a1b1e]">
+                            <span class="material-symbols-outlined text-[20px] text-[#44474e]"
+                                style="font-variation-settings: 'FILL' 0;">notifications</span>
+                            <span class="text-[15px] font-medium">Notifications</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#74777f] text-[20px]">chevron_right</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center justify-between py-4.5 px-5 md:px-6 border-b border-[#e1e3e4] hover:bg-[#f8f9fa] transition-colors cursor-pointer"
+                        style="text-decoration: none;">
+                        <div class="flex items-center gap-4 text-[#1a1b1e]">
+                            <span class="material-symbols-outlined text-[20px] text-[#44474e]"
+                                style="font-variation-settings: 'FILL' 0;">star</span>
+                            <span class="text-[15px] font-medium">Rate Our App</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#74777f] text-[20px]">chevron_right</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center justify-between py-4.5 px-5 md:px-6 border-b border-[#e1e3e4] hover:bg-[#f8f9fa] transition-colors cursor-pointer"
+                        style="text-decoration: none;">
+                        <div class="flex items-center gap-4 text-[#1a1b1e]">
+                            <span class="material-symbols-outlined text-[20px] text-[#44474e]"
+                                style="font-variation-settings: 'FILL' 0;">admin_panel_settings</span>
+                            <span class="text-[15px] font-medium">Privacy Policy</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#74777f] text-[20px]">chevron_right</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center justify-between py-4.5 px-5 md:px-6 hover:bg-[#f8f9fa] transition-colors cursor-pointer"
+                        style="text-decoration: none;">
+                        <div class="flex items-center gap-4 text-[#1a1b1e]">
+                            <span class="material-symbols-outlined text-[20px] text-[#44474e]"
+                                style="font-variation-settings: 'FILL' 0;">gavel</span>
+                            <span class="text-[15px] font-medium">Terms & Conditions</span>
+                        </div>
+                        <span class="material-symbols-outlined text-[#74777f] text-[20px]">chevron_right</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Logout Button -->
+            <div class="mt-4 mb-8 flex justify-center">
+                <button id="logoutBtn"
+                    class="bg-white border-2 hover:bg-error/5 border-error/40 text-error px-12 py-3 rounded-full text-sm font-bold flex items-center justify-center gap-3 transition-colors shadow-sm w-full md:w-auto min-w-[200px]">
+                    <span class="material-symbols-outlined text-[20px]">logout</span> Log Out
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Mobile Nav Bar -->
+        <!-- Bottom Mobile Nav Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginView = document.getElementById('loginView');
+            const profileView = document.getElementById('profileView');
+            const loginForm = document.getElementById('loginForm');
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            // Check auth state
+            function checkAuth() {
+                const userData = localStorage.getItem('acc_user');
+                if (userData) {
+                    try {
+                        const parsed = JSON.parse(userData);
+                        document.getElementById('displayProfileName').textContent = parsed.name || 'User';
+                        document.getElementById('displayProfilePhone').textContent = parsed.phone || '+91 0000000000';
+
+                        // Extract initials
+                        let initials = 'U';
+                        if (parsed.name && parsed.name.trim().length > 0) {
+                            const splits = parsed.name.trim().split(' ');
+                            if (splits.length === 1) initials = splits[0].charAt(0).toUpperCase();
+                            else initials = splits[0].charAt(0).toUpperCase() + splits[1].charAt(0).toUpperCase();
+                        }
+                        document.getElementById('profileAvatar').textContent = initials;
+
+                        loginView.classList.replace('flex', 'hidden');
+                        profileView.classList.replace('hidden', 'flex');
+                    } catch (e) {
+                        localStorage.removeItem('acc_user');
+                        loginView.classList.replace('hidden', 'flex');
+                        profileView.classList.replace('flex', 'hidden');
+                    }
+                } else {
+                    loginView.classList.replace('hidden', 'flex');
+                    profileView.classList.replace('flex', 'hidden');
+                }
+            }
+
+            // Handle Login
+            if (loginForm) {
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('loginName').value.trim();
+                    const phone = document.getElementById('loginPhone').value.trim();
+                    const email = document.getElementById('loginEmail').value.trim();
+
+                    if (name && phone && email) {
+                        localStorage.setItem('acc_user', JSON.stringify({ name, phone, email }));
+                        checkAuth();
+                    }
+                });
+            }
+
+            // Handle Logout
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    localStorage.removeItem('acc_user');
+                    checkAuth();
+                });
+            }
+
+            // Initialize app
+            checkAuth();
+        });
+    </script>
+</body>
+
+</html>

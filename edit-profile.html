@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Edit Profile - Aruna Computers Care</title>
+    <!-- Tailwind & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed-variant": "#00468c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "primary-container": "#1565c0",
+                        "on-primary-container": "#dae5ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "secondary-fixed-dim": "#ffb870",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary-container": "#ff9800",
+                        "on-tertiary-fixed": "#001945",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#dde5ff",
+                        "primary": "#004d99",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#134aa4",
+                        "surface-tint": "#005db7",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#653900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcbe",
+                        "secondary": "#8b5000",
+                        "on-secondary-fixed": "#2c1600",
+                        "tertiary-container": "#3563be",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c2c6d4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727783",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "fontFamily": {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand" style="text-decoration: none;">
+                <span class="material-symbols-outlined icon-fill">memory</span>
+                <span class="brand-name">ACC</span>
+            </a>
+
+            <nav class="nav-links desktop-only">
+                <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
+                <a href="profile.html" class="active"><span class="material-symbols-outlined">person</span> Profile</a>
+            </nav>
+
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-md mx-auto px-5 py-8 flex flex-col gap-6 flex-grow">
+        <!-- Top Info -->
+        <div class="flex flex-col items-center mb-2 mt-4">
+            <h2 id="displayHeaderName" class="text-2xl font-extrabold text-on-surface tracking-tight mb-1">Update
+                Profile</h2>
+            <p class="text-sm text-on-surface-variant font-medium">Update your personal details below.</p>
+        </div>
+
+        <!-- Form Card -->
+        <form id="editProfileForm"
+            class="bg-white rounded-[20px] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-outline-variant/30 flex flex-col gap-5">
+            <!-- Full Name -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-bold text-on-surface">Full Name</label>
+                <div class="relative">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">person</span>
+                    <input type="text" id="editName" required placeholder="Customer Name"
+                        class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                </div>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="flex flex-col gap-1.5">
+                <label class="text-[13px] font-bold text-on-surface">Mobile Number</label>
+                <div class="relative">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">phone_iphone</span>
+                    <input type="tel" id="editPhone" required pattern="[0-9]{10}" placeholder="10-digit number"
+                        class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all">
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5 font-medium">Used for service updates.</p>
+            </div>
+
+            <!-- Email Address -->
+            <div class="flex flex-col gap-1.5 mb-2">
+                <label class="text-[13px] font-bold text-on-surface">Email Address</label>
+                <div class="relative">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">mail</span>
+                    <input type="email" id="editEmail" required placeholder="Enter your valid email address"
+                        class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold text-on-surface focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all placeholder:font-normal">
+                </div>
+            </div>
+
+            <button type="submit" id="saveProfileBtn"
+                class="mt-2 w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl text-sm font-bold shadow-sm transition-colors flex items-center justify-center gap-2">
+                Save Changes
+            </button>
+            <p id="successMsg" class="text-green-600 font-medium text-xs text-center hidden mt-1">Profile updated
+                successfully!</p>
+        </form>
+    </main>
+
+        <!-- Bottom Mobile Nav Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const userData = localStorage.getItem('acc_user');
+            if (userData) {
+                try {
+                    const parsed = JSON.parse(userData);
+                    document.getElementById('editName').value = parsed.name || '';
+                    document.getElementById('editPhone').value = parsed.phone || '';
+                    document.getElementById('editEmail').value = parsed.email || '';
+
+                    document.getElementById('displayHeaderName').textContent = parsed.name || 'Update Profile';
+                } catch (e) { console.error('Parse error'); }
+            } else {
+                // Push them to profile.html to login
+                window.location.href = 'profile.html';
+            }
+
+            document.getElementById('editProfileForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('editName').value.trim();
+                const phone = document.getElementById('editPhone').value.trim();
+                const email = document.getElementById('editEmail').value.trim();
+
+                if (name && phone && email) {
+                    localStorage.setItem('acc_user', JSON.stringify({ name, phone, email }));
+                    document.getElementById('successMsg').classList.remove('hidden');
+                    document.getElementById('displayHeaderName').textContent = name;
+                    setTimeout(() => {
+                        window.location.href = 'profile.html';
+                    }, 1500);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

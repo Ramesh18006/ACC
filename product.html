@@ -1,179 +1,196 @@
-<!DOCTYPE html><html lang="en" style=""><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Products-ACC</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "surface-container": "#edeeef",
-                "primary-fixed-dim": "#a9c7ff",
-                "surface-dim": "#d9dadb",
-                "surface-container-low": "#f3f4f5",
-                "on-primary-fixed-variant": "#00468c",
-                "error": "#ba1a1a",
-                "on-secondary-fixed-variant": "#693c00",
-                "primary-container": "#1565c0",
-                "on-primary-container": "#dae5ff",
-                "error-container": "#ffdad6",
-                "background": "#f8f9fa",
-                "on-surface-variant": "#424752",
-                "tertiary-fixed-dim": "#b0c6ff",
-                "secondary-fixed-dim": "#ffb870",
-                "inverse-primary": "#a9c7ff",
-                "on-primary-fixed": "#001b3d",
-                "secondary-container": "#ff9800",
-                "on-tertiary-fixed": "#001945",
-                "surface-container-lowest": "#ffffff",
-                "on-tertiary-container": "#dde5ff",
-                "primary": "#004d99",
-                "on-surface": "#191c1d",
-                "on-error": "#ffffff",
-                "tertiary": "#134aa4",
-                "surface-tint": "#005db7",
-                "surface-container-highest": "#e1e3e4",
-                "on-background": "#191c1d",
-                "on-tertiary-fixed-variant": "#00429c",
-                "on-primary": "#ffffff",
-                "surface-variant": "#e1e3e4",
-                "surface-bright": "#f8f9fa",
-                "surface-container-high": "#e7e8e9",
-                "on-secondary-container": "#653900",
-                "on-secondary": "#ffffff",
-                "secondary-fixed": "#ffdcbe",
-                "secondary": "#8b5000",
-                "on-secondary-fixed": "#2c1600",
-                "tertiary-container": "#3563be",
-                "tertiary-fixed": "#d9e2ff",
-                "inverse-on-surface": "#f0f1f2",
-                "surface": "#f8f9fa",
-                "inverse-surface": "#2e3132",
-                "outline-variant": "#c2c6d4",
-                "on-error-container": "#93000a",
-                "on-tertiary": "#ffffff",
-                "outline": "#727783",
-                "primary-fixed": "#d6e3ff"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px",
-                "2xl": "20px"
-        },
-        "spacing": {
-                "gutter": "24px",
-                "xs": "4px",
-                "xl": "80px",
-                "lg": "48px",
-                "margin-mobile": "16px",
-                "base": "8px",
-                "sm": "12px",
-                "margin-desktop": "64px",
-                "md": "24px"
-        },
-        "fontFamily": {
-                "label-lg": ["Inter"],
-                "title-lg": ["Inter"],
-                "headline-lg": ["Inter"],
-                "body-lg": ["Inter"],
-                "headline-lg-mobile": ["Inter"],
-                "label-sm": ["Inter"],
-                "body-md": ["Inter"],
-                "display-lg": ["Inter"],
-                "sans": ["Inter", "sans-serif"]
-        },
-        "fontSize": {
-                "label-lg": [
-                        "14px",
-                        {
+<!DOCTYPE html>
+<html lang="en" style="">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Products-ACC</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed-variant": "#00468c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "primary-container": "#1565c0",
+                        "on-primary-container": "#dae5ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "secondary-fixed-dim": "#ffb870",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary-container": "#ff9800",
+                        "on-tertiary-fixed": "#001945",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#dde5ff",
+                        "primary": "#004d99",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#134aa4",
+                        "surface-tint": "#005db7",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#653900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcbe",
+                        "secondary": "#8b5000",
+                        "on-secondary-fixed": "#2c1600",
+                        "tertiary-container": "#3563be",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c2c6d4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727783",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "20px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "margin-desktop": "64px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "label-lg": [
+                            "14px",
+                            {
                                 "lineHeight": "20px",
                                 "letterSpacing": "0.1px",
                                 "fontWeight": "500"
-                        }
-                ],
-                "title-lg": [
-                        "22px",
-                        {
+                            }
+                        ],
+                        "title-lg": [
+                            "22px",
+                            {
                                 "lineHeight": "28px",
                                 "fontWeight": "500"
-                        }
-                ],
-                "headline-lg": [
-                        "32px",
-                        {
+                            }
+                        ],
+                        "headline-lg": [
+                            "32px",
+                            {
                                 "lineHeight": "40px",
                                 "fontWeight": "600"
-                        }
-                ],
-                "body-lg": [
-                        "16px",
-                        {
+                            }
+                        ],
+                        "body-lg": [
+                            "16px",
+                            {
                                 "lineHeight": "24px",
                                 "letterSpacing": "0.5px",
                                 "fontWeight": "400"
-                        }
-                ],
-                "headline-lg-mobile": [
-                        "28px",
-                        {
+                            }
+                        ],
+                        "headline-lg-mobile": [
+                            "28px",
+                            {
                                 "lineHeight": "36px",
                                 "fontWeight": "600"
-                        }
-                ],
-                "label-sm": [
-                        "11px",
-                        {
+                            }
+                        ],
+                        "label-sm": [
+                            "11px",
+                            {
                                 "lineHeight": "16px",
                                 "letterSpacing": "0.5px",
                                 "fontWeight": "500"
-                        }
-                ],
-                "body-md": [
-                        "14px",
-                        {
+                            }
+                        ],
+                        "body-md": [
+                            "14px",
+                            {
                                 "lineHeight": "20px",
                                 "letterSpacing": "0.25px",
                                 "fontWeight": "400"
-                        }
-                ],
-                "display-lg": [
-                        "57px",
-                        {
+                            }
+                        ],
+                        "display-lg": [
+                            "57px",
+                            {
                                 "lineHeight": "64px",
                                 "letterSpacing": "-0.25px",
                                 "fontWeight": "700"
-                        }
-                ]
+                            }
+                        ]
+                    }
+                },
+            },
         }
-},
-    },
-  }
-</script>
-<style>
-        body, h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Inter', sans-serif; }
+    </script>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .display-font {
+            font-family: 'Inter', sans-serif;
+        }
+
         .glass-panel {
             background: rgba(248, 249, 250, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
+
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
+
         .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
 </head>
+
 <body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col pb-20 md:pb-0 font-sans">
     <!-- Header / Navbar -->
     <header class="navbar">
@@ -187,8 +204,9 @@
             <nav class="nav-links desktop-only">
                 <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
                 <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
-                <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
+                <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span>
+                    Products</a>
+                <a href="profile.html"><span class="material-symbols-outlined">person</span> Profile</a>
             </nav>
 
             <button class="lang-btn">
@@ -200,7 +218,8 @@
     <!-- Main Content Area with Background Image -->
     <main class="relative w-full max-w-[1440px] mx-auto flex-grow flex flex-col">
         <!-- Background Image layer -->
-        <div class="absolute inset-0 z-0 h-[400px] md:h-[600px] w-full bg-cover bg-center bg-no-repeat opacity-40 md:opacity-100" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIRgzJUa1kMf04-H_Lj4lxCaH9K7Kz45GvRfcjevZ0cwwjXBxq4vSnSbdcu3_aPe8c49Pz6DBvX3hKJKok2dsOrIzzdQAqypMFfYcADgymjhywwFE4dxU9MS1CPhJllHF_0xG9nIaOMNpZaNZ1SGDcR1uGSQCAZ8dsLlIzHyI2tzgwRSiceCb6FwCFtPrDYz13jHrYqgIUD4w_5WWWncLK0QY134NB-d7pNFFxiwPz5gzMgWkzMHSa');">
+        <div class="absolute inset-0 z-0 h-[400px] md:h-[600px] w-full bg-cover bg-center bg-no-repeat opacity-40 md:opacity-100"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIRgzJUa1kMf04-H_Lj4lxCaH9K7Kz45GvRfcjevZ0cwwjXBxq4vSnSbdcu3_aPe8c49Pz6DBvX3hKJKok2dsOrIzzdQAqypMFfYcADgymjhywwFE4dxU9MS1CPhJllHF_0xG9nIaOMNpZaNZ1SGDcR1uGSQCAZ8dsLlIzHyI2tzgwRSiceCb6FwCFtPrDYz13jHrYqgIUD4w_5WWWncLK0QY134NB-d7pNFFxiwPz5gzMgWkzMHSa');">
             <!-- Gradient fade out to background color -->
             <div class="absolute inset-0 bg-gradient-to-b from-[#f8f9fa]/40 via-[#f8f9fa]/80 to-[#f8f9fa]"></div>
         </div>
@@ -210,15 +229,25 @@
             <section class="max-w-4xl mx-auto text-center mb-8 md:mb-xl pt-4 md:pt-lg flex flex-col items-center">
                 <div class="flex items-center justify-center gap-2 mb-2">
                     <span class="material-symbols-outlined text-4xl md:text-5xl text-on-surface">domain</span>
-                    <h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold">Explore</h1>
+                    <h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold">
+                        Explore</h1>
                 </div>
-                <h1 class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold mb-3 md:mb-4">Products</h1>
-                <p class="text-body-md md:text-title-lg font-body-md md:font-title-lg text-on-surface-variant mb-6 md:mb-lg font-normal max-w-md mx-auto">Quality Technology Products for Home, Office & Business.</p>
-                
-                <div class="relative w-full max-w-2xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300 rounded-full bg-white">
-                    <span class="material-symbols-outlined absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-primary">search</span>
-                    <input id="search-input" class="w-full h-12 md:h-14 pl-12 md:pl-14 pr-12 md:pr-16 rounded-full border border-outline-variant/30 bg-transparent focus:bg-white focus:ring-2 focus:ring-primary text-body-md md:text-body-lg placeholder:text-outline outline-none" placeholder="Search laptops, printers, accessories..." type="text">
-                    <button id="search-btn" class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 p-1.5 md:p-2 text-on-surface-variant hover:text-primary hover:bg-primary/10 rounded-full transition-colors cursor-pointer">
+                <h1
+                    class="text-headline-lg-mobile md:text-display-lg font-display-lg text-on-surface font-bold mb-3 md:mb-4">
+                    Products</h1>
+                <p
+                    class="text-body-md md:text-title-lg font-body-md md:font-title-lg text-on-surface-variant mb-6 md:mb-lg font-normal max-w-md mx-auto">
+                    Quality Technology Products for Home, Office & Business.</p>
+
+                <div
+                    class="relative w-full max-w-2xl mx-auto shadow-sm hover:shadow-md transition-shadow duration-300 rounded-full bg-white">
+                    <span
+                        class="material-symbols-outlined absolute left-4 md:left-6 top-1/2 transform -translate-y-1/2 text-primary">search</span>
+                    <input id="search-input"
+                        class="w-full h-12 md:h-14 pl-12 md:pl-14 pr-12 md:pr-16 rounded-full border border-outline-variant/30 bg-transparent focus:bg-white focus:ring-2 focus:ring-primary text-body-md md:text-body-lg placeholder:text-outline outline-none"
+                        placeholder="Search laptops, printers, accessories..." type="text">
+                    <button id="search-btn"
+                        class="absolute right-3 md:right-4 top-1/2 transform -translate-y-1/2 p-1.5 md:p-2 text-on-surface-variant hover:text-primary hover:bg-primary/10 rounded-full transition-colors cursor-pointer">
                         <span class="material-symbols-outlined text-[20px] md:text-[24px]">search</span>
                     </button>
                 </div>
@@ -226,39 +255,54 @@
 
             <!-- Browse Categories -->
             <section id="categories" class="mb-10 md:mb-xl scroll-mt-24">
-                <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface mb-4 md:mb-md font-semibold text-left">Browse Categories</h2>
+                <h2
+                    class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface mb-4 md:mb-md font-semibold text-left">
+                    Browse Categories</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-gutter">
                     <!-- Category Card 1 -->
-                    <a href="laptops.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
-                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                    <a href="laptops.html"
+                        class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all"
+                        style="text-decoration:none;">
+                        <div
+                            class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">laptop_mac</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Laptops</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">High Performance</p>
                     </a>
                     <!-- Category Card 3 -->
-                    <a href="printers.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
-                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                    <a href="printers.html"
+                        class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all"
+                        style="text-decoration:none;">
+                        <div
+                            class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">print</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Printers</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Ink & Laser</p>
                     </a>
                     <!-- Category Card 4 -->
-                    <a href="desktops.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
-                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                    <a href="desktops.html"
+                        class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all"
+                        style="text-decoration:none;">
+                        <div
+                            class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">memory</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Custom PC</h3>
                         <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Build Your Own</p>
                     </a>
                     <!-- Category Card 5 (Accessories) -->
-                    <a href="accessories.html" class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all" style="text-decoration:none;">
-                        <div class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
+                    <a href="accessories.html"
+                        class="bg-white rounded-[24px] p-4 md:p-6 shadow-sm border border-outline-variant/30 flex flex-col items-center text-center cursor-pointer hover:shadow-md hover:border-primary-container/50 transition-all"
+                        style="text-decoration:none;">
+                        <div
+                            class="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-primary/5 flex items-center justify-center mb-3 text-primary border border-primary/20">
                             <span class="material-symbols-outlined text-[24px] md:text-[28px]">keyboard</span>
                         </div>
                         <h3 class="text-label-lg font-label-lg text-on-surface font-bold mb-1">Accessories</h3>
-                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Keyboard, Mouse & More</p>
+                        <p class="text-[9px] font-label-sm text-outline uppercase tracking-wide">Keyboard, Mouse & More
+                        </p>
                     </a>
                 </div>
             </section>
@@ -266,20 +310,24 @@
             <!-- Featured Products Section -->
             <section class="mb-10 md:mb-xl">
                 <div class="flex items-center justify-between mb-4 md:mb-md">
-                    <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface font-semibold">Featured Products</h2>
-                    <a href="#" class="text-primary text-label-lg font-label-lg hover:underline font-semibold">View All</a>
+                    <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface font-semibold">
+                        Featured Products</h2>
+                    <a href="#" class="text-primary text-label-lg font-label-lg hover:underline font-semibold">View
+                        All</a>
                 </div>
-                
+
                 <!-- Horizontal Scroll Container for Mobile and Desktop -->
                 <div class="relative group">
-                    <div id="products-container" class="flex overflow-x-auto gap-4 md:gap-gutter pb-4 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x scroll-smooth">
+                    <div id="products-container"
+                        class="flex overflow-x-auto gap-4 md:gap-gutter pb-4 hide-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x scroll-smooth">
                         <!-- Products will be injected here by JavaScript -->
                         <div class="col-span-full flex justify-center items-center py-12 w-full">
                             <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                         </div>
                     </div>
                     <!-- Right Arrow Button -->
-                    <button id="scroll-right-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-10 h-10 md:w-12 md:h-12 items-center justify-center text-primary border border-outline-variant/30 hover:bg-primary hover:text-white transition-all z-10 hidden md:flex opacity-0 group-hover:opacity-100 mr-2 -mt-12 cursor-pointer scale-95 hover:scale-100">
+                    <button id="scroll-right-btn"
+                        class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-[0_4px_12px_rgba(0,0,0,0.1)] w-10 h-10 md:w-12 md:h-12 items-center justify-center text-primary border border-outline-variant/30 hover:bg-primary hover:text-white transition-all z-10 hidden md:flex opacity-0 group-hover:opacity-100 mr-2 -mt-12 cursor-pointer scale-95 hover:scale-100">
                         <span class="material-symbols-outlined text-[20px] md:text-[24px]">arrow_forward_ios</span>
                     </button>
                 </div>
@@ -287,27 +335,37 @@
 
             <!-- Why Buy From Aruna? Section -->
             <section class="mt-12 md:mt-24 mb-16 md:mb-16">
-                <h2 class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface text-center mb-8 md:mb-12 font-medium">Why Buy From Aruna?</h2>
+                <h2
+                    class="text-title-lg md:text-headline-lg font-headline-lg text-on-surface text-center mb-8 md:mb-12 font-medium">
+                    Why Buy From Aruna?</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
                     <!-- Feature 1 -->
                     <div class="flex flex-col items-center text-center gap-3">
                         <span class="material-symbols-outlined text-[36px] text-primary">verified</span>
-                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Genuine Products</span>
+                        <span
+                            class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Genuine
+                            Products</span>
                     </div>
                     <!-- Feature 2 -->
                     <div class="flex flex-col items-center text-center gap-3">
                         <span class="material-symbols-outlined text-[36px] text-primary">payments</span>
-                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Competitive Price</span>
+                        <span
+                            class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Competitive
+                            Price</span>
                     </div>
                     <!-- Feature 3 -->
                     <div class="flex flex-col items-center text-center gap-3">
                         <span class="material-symbols-outlined text-[36px] text-primary">support_agent</span>
-                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Expert Support</span>
+                        <span
+                            class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Expert
+                            Support</span>
                     </div>
                     <!-- Feature 4 -->
                     <div class="flex flex-col items-center text-center gap-3">
                         <span class="material-symbols-outlined text-[36px] text-primary">gpp_good</span>
-                        <span class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Secure Payment</span>
+                        <span
+                            class="text-[10px] md:text-label-sm font-label-sm text-on-surface font-bold uppercase tracking-widest whitespace-pre-wrap">Secure
+                            Payment</span>
                     </div>
                 </div>
             </section>
@@ -315,73 +373,120 @@
     </main>
 
     <!-- Desktop-Only Footer -->
-    <footer class="hidden md:block w-full py-12 px-4 lg:px-margin-desktop bg-surface-container-highest max-w-[1440px] mx-auto mt-auto border-t border-outline-variant/50">
+    <footer
+        class="hidden md:block w-full py-12 px-4 lg:px-margin-desktop bg-surface-container-highest max-w-[1440px] mx-auto mt-auto border-t border-outline-variant/50">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 w-full">
             <div class="md:col-span-6 flex flex-col gap-4">
-                <h4 class="text-title-lg font-headline-lg font-bold text-on-surface uppercase tracking-wider">Aruna Computers Care</h4>
-                <p class="text-body-md font-body-md text-on-surface-variant max-w-md">Complete computer, laptop, printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
+                <h4 class="text-title-lg font-headline-lg font-bold text-on-surface uppercase tracking-wider">Aruna
+                    Computers Care</h4>
+                <p class="text-body-md font-body-md text-on-surface-variant max-w-md">Complete computer, laptop,
+                    printer, and IT service support tailored for homes and businesses across Sivakasi.</p>
             </div>
             <div class="md:col-span-3 flex flex-col gap-4">
                 <h5 class="text-label-lg font-label-lg font-bold text-on-surface">Services</h5>
                 <ul class="flex flex-col gap-2">
-                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Laptop & PC Repair</a></li>
-                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Printer Service & Ink</a></li>
-                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">CCTV Installation</a></li>
-                    <li><a href="service.html" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Networking Solutions</a></li>
+                    <li><a href="service.html"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Laptop
+                            & PC Repair</a></li>
+                    <li><a href="service.html"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Printer
+                            Service & Ink</a></li>
+                    <li><a href="service.html"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">CCTV
+                            Installation</a></li>
+                    <li><a href="service.html"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Networking
+                            Solutions</a></li>
                 </ul>
             </div>
             <div class="md:col-span-3 flex flex-col gap-4">
                 <h5 class="text-label-lg font-label-lg font-bold text-on-surface">Information</h5>
                 <ul class="flex flex-col gap-2">
-                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Terms & Conditions</a></li>
-                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Contact Us</a></li>
-                    <li><a href="#" class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Shop Location</a></li>
+                    <li><a href="#"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Privacy
+                            Policy</a></li>
+                    <li><a href="#"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Terms
+                            & Conditions</a></li>
+                    <li><a href="#"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Contact
+                            Us</a></li>
+                    <li><a href="#"
+                            class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors">Shop
+                            Location</a></li>
                 </ul>
             </div>
         </div>
         <div class="w-full mt-12 pt-6 border-t border-outline-variant/30 text-center">
-            <p class="text-body-md font-body-md text-on-surface-variant">© 2026 Aruna Computers Care. All rights reserved.</p>
+            <p class="text-body-md font-body-md text-on-surface-variant">© 2026 Aruna Computers Care. All rights
+                reserved.</p>
         </div>
     </footer>
 
     <!-- Mobile Bottom Navigation Bar -->
-    <nav class="bottom-nav mobile-only">
-        <a href="home.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
-        <a href="service.html"><span class="material-symbols-outlined">build</span><span>Services</span></a>
-        <a href="product.html" class="active"><span class="material-symbols-outlined">shopping_bag</span><span>Products</span></a>
-        <a href="#"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
+    <!-- Bottom Mobile Nav Bar -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors"
+            style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]"
+                style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
     </nav>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
-            
+
             window.allProducts = [];
-            Papa.parse(SHEET_URL, {
-                download: true,
-                header: true,
-                complete: function(results) {
-                    const products = results.data;
-                    window.allProducts = products;
-                    const container = document.getElementById('products-container');
-                    container.innerHTML = ''; // Clear loader
-                    
-                    products.forEach(product => {
-                        if (!product.Name) return; // Skip empty rows
-                        
-                        // Format price
-                        let displayPrice = product.Price;
-                        if (!isNaN(parseFloat(displayPrice))) {
-                            displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
-                        }
-                        
-                        // Bestseller badge HTML
-                        const isBestseller = product.Indicates && product.Indicates.toLowerCase().includes('bestseller');
-                        const badgeHTML = isBestseller ? `<span class="absolute top-2 right-2 bg-[#ff9800] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Bestseller</span>` : '';
-                        
-                        // Build HTML
-                        const cardHTML = `
+            fetch(SHEET_URL, { cache: 'no-store' })
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.text();
+                })
+                .then(csvData => {
+                    Papa.parse(csvData, {
+                        header: true,
+                        complete: function (results) {
+                            const products = results.data;
+                            window.allProducts = products;
+                            const container = document.getElementById('products-container');
+                            container.innerHTML = ''; // Clear loader
+
+                            products.forEach(product => {
+                                if (!product.Name) return; // Skip empty rows
+
+                                // Format price
+                                let displayPrice = product.Price;
+                                if (!isNaN(parseFloat(displayPrice))) {
+                                    displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
+                                }
+
+                                // Bestseller badge HTML
+                                const isBestseller = product.Indicates && product.Indicates.toLowerCase().includes('bestseller');
+                                const badgeHTML = isBestseller ? `<span class="absolute top-2 right-2 bg-[#ff9800] text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-sm">Bestseller</span>` : '';
+
+                                // Build HTML
+                                const cardHTML = `
                         <div class="min-w-[280px] md:min-w-[320px] bg-white rounded-[24px] p-3 shadow-sm border border-outline-variant/30 flex flex-col snap-start hover:shadow-md transition-shadow">
                             <div class="h-40 md:h-48 w-full bg-surface-container-low rounded-[16px] flex items-center justify-center relative overflow-hidden mb-4">
                                 <img alt="${product.Name}" class="w-[85%] h-[85%] object-cover mix-blend-multiply" src="${product['Image URL']}">
@@ -397,25 +502,26 @@
                             </div>
                         </div>
                         `;
-                        
-                        container.insertAdjacentHTML('beforeend', cardHTML);
-                    });
 
-                    // Smooth scroll on hash (after items render)
-                    if (window.location.hash === '#categories') {
-                        setTimeout(() => {
-                            const target = document.getElementById('categories');
-                            if (target) {
-                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                container.insertAdjacentHTML('beforeend', cardHTML);
+                            });
+
+                            // Smooth scroll on hash (after items render)
+                            if (window.location.hash === '#categories') {
+                                setTimeout(() => {
+                                    const target = document.getElementById('categories');
+                                    if (target) {
+                                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    }
+                                }, 50);
                             }
-                        }, 50);
-                    }
-                },
-                error: function(error) {
+                        }
+                    });
+                })
+                .catch(error => {
                     console.error("Error fetching products:", error);
                     document.getElementById('products-container').innerHTML = '<p class="col-span-full text-center text-red-500">Failed to load products. Please try again later.</p>';
-                }
-            });
+                });
 
             // Arrow button scroll logic
             const scrollBtn = document.getElementById('scroll-right-btn');
@@ -430,7 +536,7 @@
             function executeSearch() {
                 const searchInput = document.getElementById('search-input');
                 if (!searchInput) return;
-                
+
                 const query = searchInput.value.toLowerCase().trim();
                 if (!query) return;
 
@@ -446,8 +552,8 @@
                 } else {
                     let foundPage = `accessories.html?search=${encodeURIComponent(query)}`; // fallback
                     if (window.allProducts && window.allProducts.length > 0) {
-                        const match = window.allProducts.find(item => 
-                            (item.Name && item.Name.toLowerCase().includes(query)) || 
+                        const match = window.allProducts.find(item =>
+                            (item.Name && item.Name.toLowerCase().includes(query)) ||
                             (item.Brand && item.Brand.toLowerCase().includes(query)) ||
                             (item.Description && item.Description.toLowerCase().includes(query))
                         );
@@ -464,9 +570,9 @@
 
             const searchInput = document.getElementById('search-input');
             const searchBtn = document.getElementById('search-btn');
-            
+
             if (searchInput) {
-                searchInput.addEventListener('keypress', function(e) {
+                searchInput.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') {
                         executeSearch();
                     }
@@ -477,4 +583,6 @@
             }
         });
     </script>
-</body></html>
+</body>
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Notifications - Aruna Computers Care</title>
+    <!-- Tailwind & Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed-variant": "#00468c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "primary-container": "#1565c0",
+                        "on-primary-container": "#dae5ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "secondary-fixed-dim": "#ffb870",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary-container": "#ff9800",
+                        "on-tertiary-fixed": "#001945",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#dde5ff",
+                        "primary": "#004d99",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#134aa4",
+                        "surface-tint": "#005db7",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#653900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcbe",
+                        "secondary": "#8b5000",
+                        "on-secondary-fixed": "#2c1600",
+                        "tertiary-container": "#3563be",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c2c6d4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727783",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "fontFamily": {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand" style="text-decoration: none;">
+                <span class="material-symbols-outlined icon-fill">memory</span>
+                <span class="brand-name">ACC</span>
+            </a>
+
+            <nav class="nav-links desktop-only">
+                <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
+                <a href="service.html"><span class="material-symbols-outlined">build</span> Services</a>
+                <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
+                <a href="profile.html" class="active"><span class="material-symbols-outlined">person</span> Profile</a>
+            </nav>
+
+            <button class="lang-btn">
+                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="w-full max-w-md mx-auto px-5 py-8 flex flex-col gap-6 flex-grow">
+        <div class="mt-4">
+            <h2 class="text-[28px] font-extrabold text-on-surface tracking-tight mb-2">Preferences</h2>
+            <p class="text-sm font-medium text-on-surface-variant leading-relaxed">Manage how Aruna Computers Care
+                communicates with you.</p>
+        </div>
+
+        <div
+            class="bg-white rounded-[20px] p-6 shadow-[0_2px_12px_rgba(0,0,0,0.02)] border border-outline-variant/30 flex items-center justify-between mt-2 transition-all cursor-default">
+            <div class="pr-6">
+                <h3 class="text-[17px] font-bold text-on-surface mb-1.5 tracking-tight">Push Notifications</h3>
+                <p class="text-[13px] font-medium text-on-surface-variant leading-relaxed">Receive updates about your
+                    services, appointments, and repair status.</p>
+            </div>
+            <!-- Beautiful Tailwind Toggle Switch -->
+            <label class="relative inline-flex items-center cursor-pointer shrink-0">
+                <input type="checkbox" id="pushToggle" class="sr-only peer">
+                <div
+                    class="w-14 h-[34px] bg-surface-container rounded-full peer peer-checked:after:translate-x-[22px] peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:shadow-[0_1px_3px_rgba(0,0,0,0.2)] after:rounded-full after:h-[26px] after:w-[26px] after:transition-all peer-checked:bg-[#1565c0]">
+                </div>
+            </label>
+        </div>
+    </main>
+
+        <!-- Bottom Mobile Nav Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pushToggle = document.getElementById('pushToggle');
+            // Default is unchecked
+
+            pushToggle.addEventListener('change', async (e) => {
+                if (e.target.checked) {
+                    if (!("Notification" in window)) {
+                        alert("This browser does not support desktop notification");
+                        pushToggle.checked = false;
+                        return;
+                    }
+
+                    if (Notification.permission === "granted") {
+                        showTestNotification();
+                    } else if (Notification.permission !== "denied") {
+                        const permission = await Notification.requestPermission();
+                        if (permission === "granted") {
+                            showTestNotification();
+                        } else {
+                            pushToggle.checked = false;
+                        }
+                    } else {
+                        alert("Notifications are disabled in your browser settings. Please enable them.");
+                        pushToggle.checked = false;
+                    }
+                }
+            });
+
+            function showTestNotification() {
+                const notif = new Notification("Aruna Computers Care", {
+                    body: "Alerts enabled. You will receive notifications when new products are added!",
+                    icon: "https://cdn-icons-png.flaticon.com/512/3616/3616088.png"
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

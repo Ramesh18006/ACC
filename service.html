@@ -69,7 +69,8 @@
     </style>
 </head>
 
-<body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans">
+<body
+    class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
 
     <!-- Header / Navbar -->
     <header class="navbar">
@@ -84,7 +85,7 @@
                 <a href="home.html"><span class="material-symbols-outlined">home</span> Home</a>
                 <a href="service.html" class="active"><span class="material-symbols-outlined">build</span> Services</a>
                 <a href="product.html"><span class="material-symbols-outlined">shopping_bag</span> Products</a>
-                <a href="#"><span class="material-symbols-outlined">person</span> Profile</a>
+                <a href="profile.html"><span class="material-symbols-outlined">person</span> Profile</a>
             </nav>
 
             <button class="lang-btn">
@@ -618,6 +619,17 @@
             const submitBtnText = document.getElementById('submitBtnText');
             const trackingIdDisplay = document.getElementById('trackingIdDisplay');
 
+            // Auto-fill user details if logged in
+            try {
+                const userData = localStorage.getItem('acc_user');
+                if (userData) {
+                    const parsed = JSON.parse(userData);
+                    if (parsed.name) document.getElementById('customerName').value = parsed.name;
+                    if (parsed.phone) document.getElementById('customerPhone').value = parsed.phone;
+                    if (parsed.email) document.getElementById('customerEmail').value = parsed.email;
+                }
+            } catch (e) { console.warn("Could not prefill details"); }
+
             if (form) {
                 form.addEventListener('submit', async function (e) {
                     e.preventDefault();
@@ -716,6 +728,15 @@
                             throw new Error("Supabase not connected");
                         }
 
+                        // Auto-login the user if they aren't already
+                        try {
+                            localStorage.setItem('acc_user', JSON.stringify({
+                                name: contactName,
+                                phone: contactPhone,
+                                email: contactEmail
+                            }));
+                        } catch (e) { }
+
                         // Show success overlay
                         successOverlay.classList.remove('opacity-0', 'pointer-events-none');
                         successOverlay.classList.add('opacity-100');
@@ -729,6 +750,25 @@
             }
         });
     </script>
+        <!-- Bottom Mobile Nav Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
 </body>
 
 </html>

@@ -1,109 +1,129 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Custom PCs & Desktops - ACC</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-                "surface-container": "#edeeef",
-                "primary-fixed-dim": "#a9c7ff",
-                "surface-dim": "#d9dadb",
-                "surface-container-low": "#f3f4f5",
-                "on-primary-fixed-variant": "#00468c",
-                "error": "#ba1a1a",
-                "on-secondary-fixed-variant": "#693c00",
-                "primary-container": "#1565c0",
-                "on-primary-container": "#dae5ff",
-                "error-container": "#ffdad6",
-                "background": "#f8f9fa",
-                "on-surface-variant": "#424752",
-                "tertiary-fixed-dim": "#b0c6ff",
-                "secondary-fixed-dim": "#ffb870",
-                "inverse-primary": "#a9c7ff",
-                "on-primary-fixed": "#001b3d",
-                "secondary-container": "#ff9800",
-                "on-tertiary-fixed": "#001945",
-                "surface-container-lowest": "#ffffff",
-                "on-tertiary-container": "#dde5ff",
-                "primary": "#004d99",
-                "on-surface": "#191c1d",
-                "on-error": "#ffffff",
-                "tertiary": "#134aa4",
-                "surface-tint": "#005db7",
-                "surface-container-highest": "#e1e3e4",
-                "on-background": "#191c1d",
-                "on-tertiary-fixed-variant": "#00429c",
-                "on-primary": "#ffffff",
-                "surface-variant": "#e1e3e4",
-                "surface-bright": "#f8f9fa",
-                "surface-container-high": "#e7e8e9",
-                "on-secondary-container": "#653900",
-                "on-secondary": "#ffffff",
-                "secondary-fixed": "#ffdcbe",
-                "secondary": "#8b5000",
-                "on-secondary-fixed": "#2c1600",
-                "tertiary-container": "#3563be",
-                "tertiary-fixed": "#d9e2ff",
-                "inverse-on-surface": "#f0f1f2",
-                "surface": "#f8f9fa",
-                "inverse-surface": "#2e3132",
-                "outline-variant": "#c2c6d4",
-                "on-error-container": "#93000a",
-                "on-tertiary": "#ffffff",
-                "outline": "#727783",
-                "primary-fixed": "#d6e3ff"
-        },
-        "borderRadius": {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "full": "9999px",
-                "2xl": "20px"
-        },
-        "spacing": {
-                "gutter": "24px",
-                "xs": "4px",
-                "xl": "80px",
-                "lg": "48px",
-                "margin-mobile": "16px",
-                "base": "8px",
-                "sm": "12px",
-                "margin-desktop": "64px",
-                "md": "24px"
-        },
-        "fontFamily": {
-                "label-lg": ["Inter"],
-                "title-lg": ["Inter"],
-                "headline-lg": ["Inter"],
-                "body-lg": ["Inter"],
-                "headline-lg-mobile": ["Inter"],
-                "label-sm": ["Inter"],
-                "body-md": ["Inter"],
-                "display-lg": ["Inter"],
-                "sans": ["Inter", "sans-serif"]
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Custom PCs & Desktops - ACC</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#edeeef",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-low": "#f3f4f5",
+                        "on-primary-fixed-variant": "#00468c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "primary-container": "#1565c0",
+                        "on-primary-container": "#dae5ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "tertiary-fixed-dim": "#b0c6ff",
+                        "secondary-fixed-dim": "#ffb870",
+                        "inverse-primary": "#a9c7ff",
+                        "on-primary-fixed": "#001b3d",
+                        "secondary-container": "#ff9800",
+                        "on-tertiary-fixed": "#001945",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#dde5ff",
+                        "primary": "#004d99",
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#134aa4",
+                        "surface-tint": "#005db7",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "on-tertiary-fixed-variant": "#00429c",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-container": "#653900",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdcbe",
+                        "secondary": "#8b5000",
+                        "on-secondary-fixed": "#2c1600",
+                        "tertiary-container": "#3563be",
+                        "tertiary-fixed": "#d9e2ff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface": "#f8f9fa",
+                        "inverse-surface": "#2e3132",
+                        "outline-variant": "#c2c6d4",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727783",
+                        "primary-fixed": "#d6e3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "20px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "margin-desktop": "64px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "title-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-</script>
-<style>
-        body, h1, h2, h3, h4, h5, h6, .display-font { font-family: 'Inter', sans-serif; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
+    </script>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .display-font {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 </head>
-<body class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans">
-    
+
+<body
+    class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
+
     <!-- Header / Navbar -->
     <header class="navbar">
         <div class="nav-container">
@@ -121,34 +141,50 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-[#191c1d]" style="background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=2000');">
+    <section
+        class="relative w-full h-[220px] md:h-[320px] bg-cover bg-center flex flex-col justify-center items-center text-[#191c1d]"
+        style="background-image: url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&q=80&w=2000');">
         <div class="absolute inset-0 bg-[#f8f9fa]/50 z-0"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#f8f9fa]/50 to-[#f8f9fa] z-0"></div>
         <div class="relative z-10 text-center">
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm px-4">Master Your Workspace</h1>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-sm px-4">Master Your
+                Workspace</h1>
             <p class="text-md md:text-lg font-medium opacity-90 px-4 drop-shadow-sm">Custom PCs & Premium Desktops</p>
         </div>
     </section>
 
     <!-- Main Content -->
     <main class="w-full max-w-[1440px] mx-auto px-4 md:px-margin-desktop py-8 md:py-12 flex flex-col gap-10 flex-grow">
-        
+
         <!-- Filters -->
         <section class="flex flex-col gap-3">
             <h3 class="text-sm font-bold text-on-surface uppercase tracking-wider">Filter by Price</h3>
             <div class="flex flex-wrap gap-2 md:gap-3" id="price-filters">
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-primary text-white shadow-sm filter-btn" data-min="0" data-max="Infinity">ALL Prices</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="0" data-max="30000">Under ₹30,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="30000" data-max="50000">₹30,000 - ₹50,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="50000" data-max="80000">₹50,000 - ₹80,000</button>
-                <button class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn" data-min="80000" data-max="Infinity">₹80,000+</button>
+                <button
+                    class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-primary text-white shadow-sm filter-btn"
+                    data-min="0" data-max="Infinity">ALL Prices</button>
+                <button
+                    class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn"
+                    data-min="0" data-max="30000">Under ₹30,000</button>
+                <button
+                    class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn"
+                    data-min="30000" data-max="50000">₹30,000 - ₹50,000</button>
+                <button
+                    class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn"
+                    data-min="50000" data-max="80000">₹50,000 - ₹80,000</button>
+                <button
+                    class="px-4 py-2 rounded-full text-[11px] md:text-xs font-bold transition-all bg-surface-container-low text-on-surface-variant hover:bg-surface-container filter-btn"
+                    data-min="80000" data-max="Infinity">₹80,000+</button>
             </div>
         </section>
 
         <!-- Search Indicator -->
         <div id="search-indicator" class="hidden -mt-4 mb-4 flex-wrap items-center gap-3">
-            <span class="text-sm md:text-base text-on-surface-variant font-medium">Search results for: "<strong id="search-term-display" class="text-primary"></strong>"</span>
-            <button id="clear-search-btn" class="text-xs bg-error/10 text-error px-3 py-1.5 rounded-full font-bold hover:bg-error hover:text-white transition-colors cursor-pointer flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">close</span> Clear Search</button>
+            <span class="text-sm md:text-base text-on-surface-variant font-medium">Search results for: "<strong
+                    id="search-term-display" class="text-primary"></strong>"</span>
+            <button id="clear-search-btn"
+                class="text-xs bg-error/10 text-error px-3 py-1.5 rounded-full font-bold hover:bg-error hover:text-white transition-colors cursor-pointer flex items-center gap-1"><span
+                    class="material-symbols-outlined text-[14px]">close</span> Clear Search</button>
         </div>
 
         <!-- Dynamic Container for Brand Sections -->
@@ -159,7 +195,7 @@
         </div>
 
     </main>
-    
+
     <!-- Simple Footer -->
     <footer class="w-full py-8 px-4 bg-[#e1e3e4] text-center border-t border-outline-variant/30 mt-auto">
         <p class="text-[12px] text-[#424752] font-medium">© 2026 Aruna Computers Care. All rights reserved.</p>
@@ -167,9 +203,9 @@
 
     <!-- JS Logic -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS9B8RWH-SMmDwX11nBAhR3FddNQp_I9iTDT3nwT4dbMM0jTY3MtBGUtgPXCRtvpgWVI2h-oFQ-srsJ/pub?output=csv";
-            
+
             let allDesktops = [];
             let currentMin = 0;
             let currentMax = Infinity;
@@ -185,10 +221,15 @@
                 });
             }
 
-            Papa.parse(SHEET_URL, {
-                download: true,
-                header: true,
-                complete: function(results) {
+            fetch(SHEET_URL, { cache: 'no-store' })
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.text();
+                })
+                .then(csvData => {
+                    Papa.parse(csvData, {
+                        header: true,
+                        complete: function (results) {
                     const data = results.data;
                     // Filter only Desktops / PCs
                     allDesktops = data.filter(item => {
@@ -197,29 +238,30 @@
                         return cat.includes('desktop') || cat.includes('pc');
                     });
                     renderBrands();
-                },
-                error: function(err) {
-                    document.getElementById('brands-container').innerHTML = '<p class="text-[#ba1a1a] py-8">Failed to load data. Please check your connection.</p>';
                 }
-            });
+                    });
+                })
+                .catch(err => {
+                    document.getElementById('brands-container').innerHTML = '<p class="text-[#ba1a1a] py-8">Failed to load data. Please check your connection.</p>';
+                });
 
             function renderBrands() {
                 const container = document.getElementById('brands-container');
                 container.innerHTML = '';
-                
+
                 // Filter by price and search term
                 const filteredDesktops = allDesktops.filter(item => {
                     const price = parseFloat(item.Price) || 0;
                     const priceMatch = price >= currentMin && price <= currentMax;
-                    
+
                     let searchMatch = true;
                     if (searchTerm) {
                         const q = searchTerm.toLowerCase();
-                        searchMatch = (item.Name && item.Name.toLowerCase().includes(q)) || 
-                                      (item.Brand && item.Brand.toLowerCase().includes(q)) ||
-                                      (item.Description && item.Description.toLowerCase().includes(q));
+                        searchMatch = (item.Name && item.Name.toLowerCase().includes(q)) ||
+                            (item.Brand && item.Brand.toLowerCase().includes(q)) ||
+                            (item.Description && item.Description.toLowerCase().includes(q));
                     }
-                    
+
                     return priceMatch && searchMatch;
                 });
 
@@ -234,10 +276,10 @@
                     "Gaming": [],
                     "Other": []
                 };
-                
+
                 filteredDesktops.forEach(desktop => {
                     const brand = desktop.Brand ? desktop.Brand.trim() : 'Other';
-                    
+
                     if (brand.toLowerCase().includes('home') || brand.toLowerCase().includes('office')) {
                         categories["Home & Office"].push(desktop);
                     } else if (brand.toLowerCase().includes('gaming')) {
@@ -254,7 +296,7 @@
                     let description = "";
                     if (catName === "Home & Office") description = "Reliable, space-saving designs for everyday productivity.";
                     if (catName === "Gaming") description = "High-performance rigs built for ultimate gaming experiences.";
-                    
+
                     let sectionHTML = `
                         <section class="flex flex-col gap-6">
                             <div class="flex flex-col md:flex-row md:items-end justify-between gap-2 border-b border-outline-variant/30 pb-4">
@@ -272,10 +314,10 @@
                         if (!isNaN(parseFloat(displayPrice))) {
                             displayPrice = '₹' + parseFloat(displayPrice).toLocaleString('en-IN');
                         }
-                        
+
                         const isBestseller = desktop.Indicates && desktop.Indicates.toLowerCase().includes('bestseller');
-                        const badge = isBestseller 
-                            ? `<span class="bg-[#004d99] text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 left-3 shadow-sm">Bestseller</span>` 
+                        const badge = isBestseller
+                            ? `<span class="bg-[#004d99] text-white text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider absolute top-3 left-3 shadow-sm">Bestseller</span>`
                             : '';
 
                         sectionHTML += `
@@ -302,7 +344,7 @@
             // Filter Buttons Logic
             const filterBtns = document.querySelectorAll('.filter-btn');
             filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     filterBtns.forEach(b => {
                         b.classList.remove('bg-primary', 'text-white', 'shadow-sm');
                         b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
@@ -317,5 +359,25 @@
             });
         });
     </script>
+        <!-- Bottom Mobile Nav Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">home</span>
+            <span class="text-[10px] font-bold">Home</span>
+        </a>
+        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">build</span>
+            <span class="text-[10px] font-bold">Services</span>
+        </a>
+        <a href="product.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+            <span class="text-[10px] font-bold">Products</span>
+        </a>
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+            <span class="material-symbols-outlined text-[24px]">person</span>
+            <span class="text-[10px] font-bold">Profile</span>
+        </a>
+    </nav>
 </body>
+
 </html>
