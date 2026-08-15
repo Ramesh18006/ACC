@@ -78,7 +78,9 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+
 </head>
+
 
 <body
     class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
@@ -104,7 +106,14 @@
     </header>
 
     <main class="w-full max-w-md mx-auto px-5 py-8 flex flex-col gap-6 flex-grow">
-        <div class="mt-4">
+        <!-- Back Navigation -->
+        <a href="profile.html"
+            class="flex items-center gap-1 text-on-surface-variant hover:text-[#004d99] w-fit -mt-2 -ml-1 py-2 px-1 transition-colors">
+            <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+            <span class="text-sm font-bold">Back to Profile</span>
+        </a>
+
+        <div class="mt-2">
             <h2 class="text-[28px] font-extrabold text-on-surface tracking-tight mb-2">Preferences</h2>
             <p class="text-sm font-medium text-on-surface-variant leading-relaxed">Manage how Aruna Computers Care
                 communicates with you.</p>
@@ -127,21 +136,29 @@
         </div>
     </main>
 
-        <!-- Bottom Mobile Nav Bar -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
-        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+    <!-- Bottom Mobile Nav Bar -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">home</span>
             <span class="text-[10px] font-bold">Home</span>
         </a>
-        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="service.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">build</span>
             <span class="text-[10px] font-bold">Services</span>
         </a>
-        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="product.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
             <span class="text-[10px] font-bold">Products</span>
         </a>
-        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
             <span class="text-[10px] font-bold">Profile</span>
         </a>
@@ -183,6 +200,8 @@
             }
         });
     </script>
+
 </body>
+
 
 </html>

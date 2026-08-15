@@ -85,7 +85,9 @@
             scrollbar-width: none;
         }
     </style>
+
 </head>
+
 
 <body
     class="bg-[#f8f9fa] text-on-background antialiased min-h-screen relative flex flex-col font-sans pb-[80px] md:pb-0">
@@ -113,38 +115,67 @@
     <!-- Login View (Hidden if logged in) -->
     <main id="loginView"
         class="hidden w-full max-w-md mx-auto px-4 py-16 flex-col gap-6 flex-grow items-center justify-center">
-        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-2">
-            <span class="material-symbols-outlined text-[32px]">account_circle</span>
-        </div>
-        <h2 class="text-2xl font-bold text-center text-on-surface block">Create Account</h2>
-        <p class="text-[13px] text-center text-on-surface-variant block">Please provide your details to manage your
-            profile, track tasks, and get notifications.</p>
+        <h1 class="text-[28px] md:text-[32px] font-extrabold text-on-surface tracking-tight mt-6 mb-2">Welcome</h1>
+        <p class="text-[13px] text-center text-on-surface-variant block">Manage your profile and track services.</p>
 
-        <form id="loginForm"
-            class="w-full bg-white rounded-[24px] p-6 shadow-sm border border-outline-variant/30 flex flex-col gap-5 mt-4">
-            <div>
-                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Full
-                    Name</label>
-                <input type="text" id="loginName" required placeholder="e.g. Rajesh Kumar"
-                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
-            </div>
-            <div>
-                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Mobile
-                    Number</label>
-                <input type="tel" id="loginPhone" required pattern="[0-9]{10}" placeholder="10-digit number"
-                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
-            </div>
-            <div>
-                <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Email
-                    Address</label>
-                <input type="email" id="loginEmail" required placeholder="Your valid email address"
-                    class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
-            </div>
-            <button type="submit"
-                class="mt-4 w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-2">
-                Continue Setup <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-            </button>
-        </form>
+        <!-- Tab Toggle -->
+        <div
+            class="w-full bg-[#f3f4f5] rounded-full p-1 mt-6 mb-2 flex relative border border-outline-variant/30 shadow-inner">
+            <button id="tabLogin"
+                class="flex-1 py-3 text-sm font-bold text-[#004d99] bg-white shadow-sm rounded-full transition-all z-10">Log
+                In</button>
+            <button id="tabSignup"
+                class="flex-1 py-3 text-sm font-bold text-[#424752] rounded-full transition-all z-10 hover:text-[#004d99]">Create
+                Account</button>
+        </div>
+
+        <div class="w-full bg-white rounded-[24px] p-6 shadow-sm border border-outline-variant/30 flex flex-col mt-4">
+
+            <!-- Login Section -->
+            <form id="formLogin" class="flex flex-col gap-5 animate-fade-in transition-all">
+                <div class="flex flex-col gap-5">
+                    <div>
+                        <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Mobile
+                            Number</label>
+                        <input type="tel" id="inLoginPhone" required placeholder="e.g. 9876543210"
+                            class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                    </div>
+                    <button type="submit" id="btnLoginSubmit"
+                        class="w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-2">
+                        Secure Login <span class="material-symbols-outlined text-[18px]">login</span>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Sign Up Section -->
+            <form id="formSignup" class="hidden flex-col gap-5 animate-fade-in transition-all">
+                <div class="flex flex-col gap-5">
+                    <div>
+                        <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Full
+                            Name</label>
+                        <input type="text" id="inSignName" required placeholder="e.g. Rajesh Kumar"
+                            class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                    </div>
+                    <div>
+                        <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Mobile
+                            Number</label>
+                        <input type="tel" id="inSignPhone" required placeholder="10-digit number"
+                            class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                    </div>
+                    <div>
+                        <label class="text-[12px] font-bold text-on-surface uppercase tracking-wider block mb-1">Email
+                            Address</label>
+                        <input type="email" id="inSignEmail" required placeholder="Valid email"
+                            class="w-full px-4 py-3.5 rounded-xl border border-outline-variant/50 bg-[#f8f9fa] text-sm font-semibold outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                    </div>
+                    <button type="submit" id="btnSignupSubmit"
+                        class="w-full bg-[#1565c0] hover:bg-[#0d47a1] text-white py-4 rounded-xl text-sm font-bold shadow-md transition-colors flex items-center justify-center gap-2">
+                        Create My Account <span class="material-symbols-outlined text-[18px]">person_add</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
     </main>
 
     <!-- Profile View (Hidden if NOT logged in) -->
@@ -329,21 +360,29 @@
     </main>
 
     <!-- Mobile Nav Bar -->
-        <!-- Bottom Mobile Nav Bar -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
-        <a href="home.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+    <!-- Bottom Mobile Nav Bar -->
+    <nav
+        class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-outline-variant/30 flex justify-between items-center px-6 py-2.5 pb-[calc(10px+env(safe-area-inset-bottom))] z-[100] shadow-[0_-4px_16px_rgba(0,0,0,0.03)]">
+        <a href="home.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">home</span>
             <span class="text-[10px] font-bold">Home</span>
         </a>
-        <a href="service.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="service.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">build</span>
             <span class="text-[10px] font-bold">Services</span>
         </a>
-        <a href="product.html" class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="product.html"
+            class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]">shopping_bag</span>
             <span class="text-[10px] font-bold">Products</span>
         </a>
-        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors" style="text-decoration: none;">
+        <a href="profile.html" class="flex flex-col items-center gap-1 text-[#004d99] transition-colors"
+            style="text-decoration: none;">
             <span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">person</span>
             <span class="text-[10px] font-bold">Profile</span>
         </a>
@@ -353,7 +392,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const loginView = document.getElementById('loginView');
             const profileView = document.getElementById('profileView');
-            const loginForm = document.getElementById('loginForm');
             const logoutBtn = document.getElementById('logoutBtn');
 
             // Check auth state
@@ -387,19 +425,80 @@
                 }
             }
 
-            // Handle Login
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const name = document.getElementById('loginName').value.trim();
-                    const phone = document.getElementById('loginPhone').value.trim();
-                    const email = document.getElementById('loginEmail').value.trim();
+            // ---- AUTH UI TABS ----
+            const tabLogin = document.getElementById('tabLogin');
+            const tabSignup = document.getElementById('tabSignup');
+            const formLogin = document.getElementById('formLogin');
+            const formSignup = document.getElementById('formSignup');
 
-                    if (name && phone && email) {
-                        localStorage.setItem('acc_user', JSON.stringify({ name, phone, email }));
-                        checkAuth();
-                    }
-                });
+            function switchTab(isLogin) {
+                if (isLogin) {
+                    tabLogin.className = "flex-1 py-3 text-sm font-bold text-[#004d99] bg-white shadow-sm rounded-full transition-all z-10";
+                    tabSignup.className = "flex-1 py-3 text-sm font-bold text-[#424752] rounded-full transition-all z-10 hover:text-[#004d99]";
+                    formLogin.classList.replace('hidden', 'flex');
+                    formSignup.classList.replace('flex', 'hidden');
+                } else {
+                    tabSignup.className = "flex-1 py-3 text-sm font-bold text-[#004d99] bg-white shadow-sm rounded-full transition-all z-10";
+                    tabLogin.className = "flex-1 py-3 text-sm font-bold text-[#424752] rounded-full transition-all z-10 hover:text-[#004d99]";
+                    formSignup.classList.replace('hidden', 'flex');
+                    formLogin.classList.replace('flex', 'hidden');
+                }
+            }
+            tabLogin?.addEventListener('click', () => switchTab(true));
+            tabSignup?.addEventListener('click', () => switchTab(false));
+
+            // ---- LOGIN FLOW ----
+            formLogin?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const phone = document.getElementById('inLoginPhone').value.trim();
+
+                if (!/^\d{10}$/.test(phone)) {
+                    return alert("Please enter a valid 10-digit Mobile Number.");
+                }
+
+                let usersDb = JSON.parse(localStorage.getItem('acc_users_db') || '{}');
+                if (!usersDb[phone]) {
+                    alert("Account not found! Please click 'Create Account' to sign up first.");
+                    return switchTab(false);
+                }
+
+                // Directly Login
+                localStorage.setItem('acc_user', JSON.stringify(usersDb[phone]));
+                checkAuth();
+                resetForms();
+            });
+
+            // ---- SIGNUP FLOW ----
+            formSignup?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('inSignName').value.trim();
+                const phone = document.getElementById('inSignPhone').value.trim();
+                const email = document.getElementById('inSignEmail').value.trim();
+
+                if (!name || !/^\d{10}$/.test(phone) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    return alert("Please fill out all fields correctly.");
+                }
+
+                let usersDb = JSON.parse(localStorage.getItem('acc_users_db') || '{}');
+                if (usersDb[phone]) {
+                    alert("An account with this mobile number already exists! Please log in instead.");
+                    return switchTab(true);
+                }
+
+                // Create User & Direct Login
+                const newUser = { name, phone, email };
+                usersDb[phone] = newUser;
+                localStorage.setItem('acc_users_db', JSON.stringify(usersDb));
+                localStorage.setItem('acc_user', JSON.stringify(newUser));
+
+                checkAuth();
+                resetForms();
+            });
+
+            function resetForms() {
+                formLogin?.reset();
+                formSignup?.reset();
+                switchTab(true);
             }
 
             // Handle Logout
@@ -414,6 +513,8 @@
             checkAuth();
         });
     </script>
+
 </body>
+
 
 </html>
