@@ -215,6 +215,15 @@
                                     class="w-full bg-transparent text-sm outline-none text-on-surface font-medium"
                                     required>
                             </div>
+                            <div
+                                class="form-input relative bg-[#f8f9fa] border border-outline-variant/30 rounded-xl px-4 py-2 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+                                <label
+                                    class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider block mb-0.5 transition-colors">Email
+                                    Address</label>
+                                <input type="email" id="customerEmail"
+                                    class="w-full bg-transparent text-sm outline-none text-on-surface font-medium"
+                                    required>
+                            </div>
                         </div>
                     </div>
 
@@ -619,9 +628,30 @@
 
                     // Gather Form Data
                     const selectedCategory = document.querySelector('input[name="category"]:checked')?.value || 'Laptop';
-                    const issueDescription = document.getElementById('issueText').value;
-                    const contactName = document.getElementById('customerName').value;
-                    const contactPhone = document.getElementById('customerPhone').value;
+                    const issueDescription = document.getElementById('issueText').value.trim();
+                    const contactName = document.getElementById('customerName').value.trim();
+                    const contactPhone = document.getElementById('customerPhone').value.trim();
+                    const contactEmail = document.getElementById('customerEmail').value.trim();
+
+                    // Strong Javascript Validation
+                    if (!contactName) {
+                        alert("Please enter your Full Name.");
+                        submitBtn.disabled = false;
+                        submitBtnText.textContent = "Submit Request";
+                        return;
+                    }
+                    if (!/^\d{10}$/.test(contactPhone)) {
+                        alert("Please enter a valid 10-digit mobile number.");
+                        submitBtn.disabled = false;
+                        submitBtnText.textContent = "Submit Request";
+                        return;
+                    }
+                    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail)) {
+                        alert("Please enter a valid email address.");
+                        submitBtn.disabled = false;
+                        submitBtnText.textContent = "Submit Request";
+                        return;
+                    }
 
                     // Generate Tracking ID (Sequential DB check)
                     submitBtnText.textContent = "Generating ID...";
@@ -673,7 +703,7 @@
                         if (supabase) {
                             const { data, error } = await supabase
                                 .from('service_requests')
-                                .insert([{ category: selectedCategory, issue_text: issueDescription, contact_name: contactName, contact_phone: contactPhone, image_url: uploadedImageUrl, voice_url: uploadedVoiceUrl, location_lat: locationCoords.lat, location_lng: locationCoords.lng, tracking_id: trackingId }])
+                                .insert([{ category: selectedCategory, issue_text: issueDescription, contact_name: contactName, contact_phone: contactPhone, contact_email: contactEmail, image_url: uploadedImageUrl, voice_url: uploadedVoiceUrl, location_lat: locationCoords.lat, location_lng: locationCoords.lng, tracking_id: trackingId }])
                                 .select();
 
                             if (error) {
