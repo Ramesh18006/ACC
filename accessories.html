@@ -136,9 +136,7 @@
 
             <!-- Desktop Links Only -->
 
-            <button class="lang-btn">
-                EN/தமிழ் <span class="material-symbols-outlined">expand_more</span>
-            </button>
+            
         </div>
     </header>
 
@@ -297,9 +295,14 @@
                                 <h3 class="font-bold text-[16px] text-[#191c1d] mb-1 line-clamp-1">${item.Name}</h3>
                                 <p class="text-[11px] text-[#424752] line-clamp-2 mb-4 flex-grow leading-relaxed">${item.Description || ''}</p>
                                 <span class="font-extrabold text-[22px] text-[#004d99] mb-4 block">${displayPrice}</span>
-                                <button class="w-full py-2.5 rounded-full border-2 border-[#004d99] text-[#004d99] font-bold text-xs hover:bg-[#004d99] hover:text-white transition-colors flex items-center justify-center gap-2">
-                                    <span class="material-symbols-outlined text-[16px]">shopping_cart</span> Add to Cart
-                                </button>
+                                <div class="flex gap-2 w-full mt-auto">
+                                    <button class="flex-1 py-2 rounded-full border-2 border-[#004d99] text-[#004d99] font-bold text-[11px] sm:text-xs hover:bg-[#004d99] hover:text-white transition-colors flex items-center justify-center gap-1">
+                                        <span class="material-symbols-outlined text-[14px]">shopping_cart</span> Cart
+                                    </button>
+                                    <a href="tel:+919876543210" class="flex-1 py-2 rounded-full bg-[#1565c0] text-white font-bold text-[11px] sm:text-xs hover:bg-[#0d47a1] shadow-sm transition-colors flex items-center justify-center gap-1" style="text-decoration: none;">
+                                        <span class="material-symbols-outlined text-[14px]">call</span> Ask Manager
+                                    </a>
+                                </div>
                             </div>
                         `;
                     });
@@ -347,7 +350,6 @@
         </a>
     </nav>
 
-</body>
 
-
+    </body>
 </html>
