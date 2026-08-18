@@ -889,6 +889,12 @@
                     inputField.focus();
                 }
             });
+            
+            // Auto-open bot if hashtag #bot
+            if (window.location.hash === '#bot') {
+                setTimeout(() => toggleBtn.click(), 400);
+            }
+
 
             closeBtn.addEventListener('click', () => {
                 chatbotContainer.classList.add('hidden');

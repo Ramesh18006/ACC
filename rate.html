@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Rate Our App - ACC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .star-box .material-symbols-outlined { cursor: pointer; transition: color 0.15s, transform 0.15s; }
+        .star-box .material-symbols-outlined:hover { transform: scale(1.15); }
+        .star-active { color: #ff9800; font-variation-settings: 'FILL' 1; }
+        .star-inactive { color: #c2c6d4; font-variation-settings: 'FILL' 0; }
+    </style>
+</head>
+<body class="bg-[#f8f9fa] text-[#191c1d] antialiased min-h-screen flex flex-col font-sans">
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="home.html" class="brand" style="text-decoration: none;">
+                <img src="images/Logo.png" alt="ACC Logo" style="height: 38px; width: auto; object-fit: contain; image-rendering: crisp-edges; margin-right: 6px;" />
+                <span class="brand-name">ACC</span>
+            </a>
+        </div>
+    </header>
+    
+    <main class="w-full max-w-lg mx-auto px-5 py-12 flex flex-col items-center flex-grow">
+        <div class="w-full mb-6">
+            <a href="profile.html" class="flex items-center gap-1 text-[#424752] hover:text-[#004d99] w-fit py-2 transition-colors" style="text-decoration: none;">
+                <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                <span class="text-sm font-bold">Back to Profile</span>
+            </a>
+        </div>
+        
+        <div id="ratingCard" class="bg-white rounded-3xl w-full p-8 shadow-sm border border-[#e1e3e4] text-center transition-all">
+            <div class="w-20 h-20 bg-[#d6e3ff] text-[#004d99] rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">reviews</span>
+            </div>
+            
+            <h1 class="text-2xl font-extrabold text-[#1a1b1e] mb-2 tracking-tight">Enjoying ACC?</h1>
+            <p class="text-sm text-[#44474e] mb-8 font-medium">Tap a star to rate your digital experience with Aruna Computers Care!</p>
+            
+            <!-- Stars -->
+            <div class="flex justify-center gap-2 mb-8 star-box" id="starContainer">
+                <span class="material-symbols-outlined text-[40px] star-inactive" data-val="1">star</span>
+                <span class="material-symbols-outlined text-[40px] star-inactive" data-val="2">star</span>
+                <span class="material-symbols-outlined text-[40px] star-inactive" data-val="3">star</span>
+                <span class="material-symbols-outlined text-[40px] star-inactive" data-val="4">star</span>
+                <span class="material-symbols-outlined text-[40px] star-inactive" data-val="5">star</span>
+            </div>
+            
+            <textarea id="feedbackText" rows="3" placeholder="Tell us what you loved (optional)..." class="w-full max-w-sm mx-auto p-4 bg-[#f8f9fa] border border-[#e1e3e4] rounded-xl text-sm outline-none focus:border-[#004d99] focus:ring-1 focus:ring-[#004d99] disabled:opacity-50 transition-all font-medium mb-6 resize-none block"></textarea>
+            
+            <button id="submitBtn" disabled class="w-full max-w-sm mx-auto bg-[#ff9800] text-white py-3.5 rounded-full text-base font-bold shadow-md hover:bg-[#e68900] disabled:bg-[#c2c6d4] disabled:shadow-none transition-all block focus:outline-none">
+                Submit Review
+            </button>
+        </div>
+        
+        <div id="successCard" class="hidden flex-col items-center justify-center bg-white rounded-3xl w-full p-10 shadow-sm border border-[#e1e3e4] text-center animate-fade-in mt-12">
+            <div class="w-24 h-24 bg-[#e8f5e9] text-[#2e7d32] rounded-full flex items-center justify-center mb-6">
+                <span class="material-symbols-outlined text-[48px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            </div>
+            <h2 class="text-2xl font-extrabold text-[#1a1b1e] mb-2 tracking-tight">Thank You!</h2>
+            <p class="text-sm text-[#44474e] font-medium leading-relaxed">Your feedback has been received. We deeply appreciate you helping us make Namma Ooru Services better every day.</p>
+        </div>
+        
+    </main>
+    
+    <script>
+        const stars = document.querySelectorAll('#starContainer span');
+        const submitBtn = document.getElementById('submitBtn');
+        const ratingCard = document.getElementById('ratingCard');
+        const successCard = document.getElementById('successCard');
+        let selectedVal = 0;
+        
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedVal = parseInt(star.getAttribute('data-val'));
+                
+                stars.forEach(s => {
+                    if (parseInt(s.getAttribute('data-val')) <= selectedVal) {
+                        s.classList.remove('star-inactive');
+                        s.classList.add('star-active');
+                    } else {
+                        s.classList.remove('star-active');
+                        s.classList.add('star-inactive');
+                    }
+                });
+                submitBtn.disabled = false;
+            });
+        });
+        
+        submitBtn.addEventListener('click', () => {
+            submitBtn.textContent = "Sending...";
+            setTimeout(() => {
+                ratingCard.classList.add('hidden');
+                successCard.classList.remove('hidden');
+                successCard.classList.add('flex');
+            }, 800);
+        });
+    </script>
+</body>
+</html>
